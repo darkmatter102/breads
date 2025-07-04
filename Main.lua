@@ -225,6 +225,7 @@ for i, name in ipairs(tabNames) do
     tabBtn.BorderSizePixel = 0
     tabBtn.Parent = sidebar
     tabButtons[name] = tabBtn
+    print("[DEBUG] Created tab:", name) -- Debug print
 end
 
 -- Vertical Black Line
