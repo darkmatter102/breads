@@ -403,6 +403,7 @@ local function createDropdown(parent, name, options, details, yPos, prefix)
     list.ScrollBarThickness = 10
 
     local selected = {}
+    local optionButtons = {}
     for i, option in ipairs(options) do
         local opt = Instance.new("TextButton")
         opt.Size = UDim2.new(1, 0, 0, 38)
@@ -415,6 +416,7 @@ local function createDropdown(parent, name, options, details, yPos, prefix)
         opt.BorderSizePixel = 0
         opt.Parent = list
         opt.ZIndex = 4
+        optionButtons[option] = opt
         opt.MouseEnter:Connect(function()
             opt.Text = option .. "\n" .. (details[option] or "")
             opt.TextWrapped = true
@@ -430,7 +432,10 @@ local function createDropdown(parent, name, options, details, yPos, prefix)
             end
             if not found then table.insert(selected, option) end
             btn.Text = (#selected == 0) and prefix or (prefix .. " " .. table.concat(selected, ", "))
-            opt.BackgroundColor3 = found and Color3.fromRGB(100, 170, 220) or Color3.fromRGB(60, 200, 120)
+            -- Update all option backgrounds
+            for _, o in ipairs(options) do
+                optionButtons[o].BackgroundColor3 = table.find(selected, o) and Color3.fromRGB(60, 200, 120) or Color3.fromRGB(100, 170, 220)
+            end
         end)
     end
     btn.Text = (#selected == 0) and prefix or (prefix .. " " .. table.concat(selected, ", "))
@@ -448,7 +453,7 @@ local seedDropdownBtn, seedDropdownList, selectedSeeds = createDropdown(shopFram
 local gearDropdownBtn, gearDropdownList, selectedGear = createDropdown(shopFrame, "Gear", gearOptions, gearDetails, 128 + (#eggOptions * 38) + (#seedOptions * 38), "BUY GEAR:")
 
 -- Helper: Create Toggle
-local function createAutoBuyToggle(parent, name, yPos)
+local function createAutoBuyToggle(parent, name, yPos, getState, setState)
     local toggle = Instance.new("TextButton")
     toggle.Name = name .. "Toggle"
     toggle.Size = UDim2.new(1, -32, 0, 36)
@@ -473,27 +478,38 @@ local function createAutoBuyToggle(parent, name, yPos)
     check.TextColor3 = Color3.fromRGB(220, 220, 220)
     check.Text = ""
     check.Parent = toggle
-    return toggle, check
-end
 
-local autoBuyEggToggle, eggCheck = createAutoBuyToggle(shopFrame, "Egg", 0)
-local autoBuySeedToggle, seedCheck = createAutoBuyToggle(shopFrame, "Seed", 54)
-local autoBuyGearToggle, gearCheck = createAutoBuyToggle(shopFrame, "Gear", 108)
-
-local autoBuyEggState, autoBuySeedState, autoBuyGearState = false, false, false
-
-local function updateAutoBuyToggle(toggle, check, state)
-    if state then
-        toggle.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-        check.Text = "✅"
-    else
-        toggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-        check.Text = ""
+    local function update()
+        if getState() then
+            toggle.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
+            check.Text = "✅"
+        else
+            toggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
+            check.Text = ""
+        end
     end
+    update()
+    toggle.MouseButton1Click:Connect(function()
+        setState(not getState())
+        update()
+    end)
+    return toggle, check, update
 end
-updateAutoBuyToggle(autoBuyEggToggle, eggCheck, autoBuyEggState)
-updateAutoBuyToggle(autoBuySeedToggle, seedCheck, autoBuySeedState)
-updateAutoBuyToggle(autoBuyGearToggle, gearCheck, autoBuyGearState)
+
+local autoBuyEggState = false
+local autoBuySeedState = false
+local autoBuyGearState = false
+
+local function getEggState() return autoBuyEggState end
+local function setEggState(v) autoBuyEggState = v end
+local function getSeedState() return autoBuySeedState end
+local function setSeedState(v) autoBuySeedState = v end
+local function getGearState() return autoBuyGearState end
+local function setGearState(v) autoBuyGearState = v end
+
+local autoBuyEggToggle, eggCheck, updateEggToggle = createAutoBuyToggle(shopFrame, "Egg", 0, getEggState, setEggState)
+local autoBuySeedToggle, seedCheck, updateSeedToggle = createAutoBuyToggle(shopFrame, "Seed", 54, getSeedState, setSeedState)
+local autoBuyGearToggle, gearCheck, updateGearToggle = createAutoBuyToggle(shopFrame, "Gear", 108, getGearState, setGearState)
 
 -- Automation Remotes
 local buyEggRemote = ReplicatedStorage:FindFirstChild("GameEvents") and ReplicatedStorage.GameEvents:FindFirstChild("BuyPetEgg")
