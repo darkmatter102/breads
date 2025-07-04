@@ -1,4 +1,3 @@
-
 --[[
 GAG SCRIPT BY:BREAD
 Modern Sidebar GUI (Restarted)
