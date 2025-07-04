@@ -1,3 +1,141 @@
+Remote: ReplicatedStorage.GameEvents.LikeGarden
+Remote: ReplicatedStorage.GameEvents.FriendPotLinkEnded_RE
+Remote: ReplicatedStorage.GameEvents.SunResonance
+Remote: ReplicatedStorage.GameEvents.SunStrike
+Remote: ReplicatedStorage.GameEvents.PromptStarterPack
+Remote: ReplicatedStorage.GameEvents.UpdateFriendState
+Remote: ReplicatedStorage.GameEvents.CraftingGlobalObjectService
+Remote: ReplicatedStorage.GameEvents.GetPetCooldown
+Remote: ReplicatedStorage.GameEvents.CraftingFailedRemoteEvent
+Remote: ReplicatedStorage.GameEvents.SprayService_RE
+Remote: ReplicatedStorage.GameEvents.SetTutorialFinished
+Remote: ReplicatedStorage.GameEvents.MeteorStrike
+Remote: ReplicatedStorage.GameEvents.DiscoSetColor_RE
+Remote: ReplicatedStorage.GameEvents.TanningMirrorService
+Remote: ReplicatedStorage.GameEvents.PromptRSVP
+Remote: ReplicatedStorage.GameEvents.SummerHarvestRewardRemoteEvent
+Remote: ReplicatedStorage.GameEvents.SummerHarvestSubmitRemoteEvent
+Remote: ReplicatedStorage.GameEvents.RefreshPetModel
+Remote: ReplicatedStorage.GameEvents.InventorySortingServiceEvents.MoveEntry
+Remote: ReplicatedStorage.GameEvents.BuyTravelingMerchantShopStock
+Remote: ReplicatedStorage.GameEvents.MagnifyingGlassService_RE
+Remote: ReplicatedStorage.GameEvents.FireworkVisual
+Remote: ReplicatedStorage.GameEvents.FireworkLaunch
+Remote: ReplicatedStorage.GameEvents.PhysicalFirework
+Remote: ReplicatedStorage.ByteNetReliable
+Remote: ReplicatedStorage.GameAnalyticsError
+Remote: ReplicatedStorage.GameAnalyticsRemoteConfigs
+Remote: ReplicatedStorage.PostieReceived
+Remote: ReplicatedStorage.PostieSent
+Remote: Workspace.aadawdada261h.InputGateway.Activation
+Remote: Workspace.amaracakes2.InputGateway.Activation
+Remote: Workspace.Leecapada.InputGateway.Activation
+Remote: ReplicatedStorage.GameEvents.StarCallerService
+Remote: ReplicatedStorage.GameEvents.CosmeticCrateSkipped
+Remote: ReplicatedStorage.GameEvents.CosmeticCrateService
+Remote: ReplicatedStorage.GameEvents.CrateReadyToOpen_RE
+Remote: ReplicatedStorage.GameEvents.RemoteEvent
+Remote: ReplicatedStorage.GameEvents.HarvestRemote
+Remote: ReplicatedStorage.GameEvents.FriendInvitePrompterService
+Remote: ReplicatedStorage.GameEvents.ExperienceNotificationServicePrompterController
+Remote: ReplicatedStorage.GameEvents.CutsceneHandler
+Remote: ReplicatedStorage.GameEvents.ReplicationChannel
+Remote: ReplicatedStorage.GameEvents.LightningBoltWithNoFlash
+Remote: ReplicatedStorage.GameEvents.JandelCharge
+Remote: ReplicatedStorage.GameEvents.CosmeticPhysicalityService
+Remote: ReplicatedStorage.GameEvents.RefreshActivePetsUI
+Remote: ReplicatedStorage.GameEvents.CosmeticService
+Remote: ReplicatedStorage.GameEvents.BuyCosmeticCrate
+Remote: ReplicatedStorage.GameEvents.BuyCosmeticItem
+Remote: ReplicatedStorage.GameEvents.BuyNightEventShopStock
+Remote: ReplicatedStorage.GameEvents.BeeBolt
+Remote: ReplicatedStorage.GameEvents.DeleteObject
+Remote: ReplicatedStorage.GameEvents.SwarmFly
+Remote: ReplicatedStorage.GameEvents.EggTutorial
+Remote: ReplicatedStorage.GameEvents.CosmeticUpgradeService
+Remote: ReplicatedStorage.GameEvents.CanSeeShopPack
+Remote: ReplicatedStorage.GameEvents.PollenRadarHighlight
+Remote: ReplicatedStorage.GameEvents.NectorStaffRemoteEvent
+Remote: ReplicatedStorage.GameEvents.StartPollenRadarScan
+Remote: ReplicatedStorage.GameEvents.FinishPollenRadarScan
+Remote: ReplicatedStorage.GameEvents.FriendshipPotService_RE
+Remote: ReplicatedStorage.GameEvents.FriendshipPotToolService_RE
+Remote: ReplicatedStorage.GameEvents.PollenRadarCollectSound
+Remote: ReplicatedStorage.GameEvents.HoneyCrafterRemoteEvent
+Remote: ReplicatedStorage.GameEvents.PollenRadarReset
+Remote: ReplicatedStorage.GameEvents.FriendPotLink_RE
+Remote: ReplicatedStorage.GameEvents.LoadScreenEvent
+Remote: ReplicatedStorage.GameEvents.SortBackpackEvent
+Remote: ReplicatedStorage.GameEvents.ActivePetService
+Remote: ReplicatedStorage.GameEvents.SpawnCollectableSeed
+Remote: ReplicatedStorage.GameEvents.UnlockEventShopRemote
+Remote: ReplicatedStorage.GameEvents.SeedPackGiverEvent
+Remote: ReplicatedStorage.GameEvents.SprinklerService
+Remote: ReplicatedStorage.GameEvents.PetsService
+Remote: ReplicatedStorage.GameEvents.WeatherEventStarted
+Remote: ReplicatedStorage.GameEvents.FireDrop
+Remote: ReplicatedStorage.GameEvents.TurnOffEasterUI
+Remote: ReplicatedStorage.GameEvents.BuyPetEgg
+Remote: ReplicatedStorage.GameEvents.PetEggService
+Remote: ReplicatedStorage.GameEvents.EggReadyToHatch_RE
+Remote: ReplicatedStorage.GameEvents.ShecklesClient
+Remote: ReplicatedStorage.GameEvents.SellPet_RE
+Remote: ReplicatedStorage.GameEvents.PetGiftingService
+Remote: ReplicatedStorage.GameEvents.PetZoneAbility
+Remote: ReplicatedStorage.GameEvents.GiftPet
+Remote: ReplicatedStorage.GameEvents.AcceptPetGift
+Remote: ReplicatedStorage.GameEvents.PetSkipped
+Remote: ReplicatedStorage.GameEvents.RecallWrenchTeleport
+Remote: ReplicatedStorage.GameEvents.UnlockSlotFromPet
+Remote: ReplicatedStorage.GameEvents.SpecialEventStarted
+Remote: ReplicatedStorage.GameEvents.NightQuestRemoteEvent
+Remote: ReplicatedStorage.GameEvents.FavoriteToolRemote
+Remote: ReplicatedStorage.GameEvents.SettingsService
+Remote: ReplicatedStorage.GameEvents.HighlightRemote
+Remote: ReplicatedStorage.GameEvents.NightStaffRemoteEvent
+Remote: ReplicatedStorage.GameEvents.ClaimableCodeService
+Remote: ReplicatedStorage.GameEvents.SendClientSpecialEvent
+Remote: ReplicatedStorage.GameEvents.ReclaimerService_RE
+Remote: ReplicatedStorage.GameEvents.SummerHarvestRemoteEvent
+Remote: ReplicatedStorage.GameEvents.MeteorShower
+Remote: ReplicatedStorage.GameEvents.UpdateStock
+Remote: ReplicatedStorage.GameEvents.BuyGearStock
+Remote: ReplicatedStorage.GameEvents.DisplayChatMessage
+Remote: ReplicatedStorage.GameEvents.UpdateGearStock
+Remote: ReplicatedStorage.GameEvents.BuySeedStock
+Remote: ReplicatedStorage.GameEvents.DevRestockGearShop
+Remote: ReplicatedStorage.GameEvents.Enable_Top_Frame
+Remote: ReplicatedStorage.GameEvents.Favorite_Item
+Remote: ReplicatedStorage.GameEvents.Finish_Loading
+Remote: ReplicatedStorage.GameEvents.Remove_Item
+Remote: ReplicatedStorage.GameEvents.LightningBolt
+Remote: ReplicatedStorage.GameEvents.Notification
+Remote: ReplicatedStorage.GameEvents.PlaySound
+Remote: ReplicatedStorage.GameEvents.Plant_RE
+Remote: ReplicatedStorage.GameEvents.Pop_Effect
+Remote: ReplicatedStorage.GameEvents.Prompt_Friend
+Remote: ReplicatedStorage.GameEvents.BuyEasterStock
+Remote: ReplicatedStorage.GameEvents.Sell_Inventory
+Remote: ReplicatedStorage.GameEvents.Sell_Item
+Remote: ReplicatedStorage.GameEvents.Purchase_Object
+Remote: ReplicatedStorage.GameEvents.SendClientWeatherEvents
+Remote: ReplicatedStorage.GameEvents.Send_Rating
+Remote: ReplicatedStorage.GameEvents.Spawn_Arrow
+Remote: ReplicatedStorage.GameEvents.Sprinkler_RE
+Remote: ReplicatedStorage.GameEvents.Start_Cutscene
+Remote: ReplicatedStorage.GameEvents.Water_RE
+Remote: ReplicatedStorage.GameEvents.BuyEventShopStock
+Remote: ReplicatedStorage.GameEvents.Close_Frames
+Remote: ReplicatedStorage.GameEvents.PickupSound
+Remote: ReplicatedStorage.GameEvents.TrowelRemote
+Remote: ReplicatedStorage.GameEvents.LightningRodService
+Remote: ReplicatedStorage.GameEvents.HoneyMachineService_RE
+Remote: ReplicatedStorage.GameEvents.FriendGiftEvent
+Remote: ReplicatedStorage.GameEvents.DeveloperPurchase
+Remote: ReplicatedStorage.CmdrClient.CmdrEvent
+Remote: ReplicatedStorage.CmdrClient.CmdrFunction
+Remote: ReplicatedStorage.GameEvents.DataStreames
+
 --[[
 GAG SCRIPT BY:BREAD
 Modern Sidebar GUI (Restarted)
@@ -42,7 +180,7 @@ topBarTitle.Name = "TopBarTitle"
 topBarTitle.Size = UDim2.new(1, -80, 1, 0)
 topBarTitle.Position = UDim2.new(0, 12, 0, 0)
 topBarTitle.BackgroundTransparency = 1
-topBarTitle.Text = "GAG SCRIPT BY:BREAD BILI KANA LAPTOP LUNA"
+topBarTitle.Text = "GAG SCRIPT BY:BREAD"
 topBarTitle.Font = Enum.Font.SourceSansBold
 topBarTitle.TextSize = 24
 topBarTitle.TextColor3 = Color3.fromRGB(40, 40, 40)
@@ -72,7 +210,7 @@ closeBtn.TextColor3 = Color3.fromRGB(255,255,255)
 closeBtn.Parent = topBar
 
 -- Sidebar Tabs
-local tabNames = {"EVENT", "SHOP", "FARM", "GEAR"} -- Added GEAR tab
+local tabNames = {"EVENT", "SHOP", "FARM"}
 local tabButtons = {}
 for i, name in ipairs(tabNames) do
     local tabBtn = Instance.new("TextButton")
@@ -167,174 +305,12 @@ autoSubmitToggle.MouseButton1Click:Connect(function()
     updateAutoSubmitToggle()
 end)
 
--- SHOP TAB CONTENT
+-- === SHOP TAB CONTENT CLEANUP ===
 local shopFrame = tabContent["SHOP"]
 
--- Toggles (create these first so updateShopToggle can reference them)
-local autoBuyEggToggle = Instance.new("TextButton")
-autoBuyEggToggle.Name = "AutoBuyEggToggle"
-autoBuyEggToggle.Size = UDim2.new(1, -32, 0, 36)
-autoBuyEggToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-autoBuyEggToggle.Text = "AUTO BUY EGG"
-autoBuyEggToggle.Font = Enum.Font.SourceSansBold
-autoBuyEggToggle.TextSize = 20
-autoBuyEggToggle.TextColor3 = Color3.fromRGB(255,255,255)
-autoBuyEggToggle.BorderSizePixel = 0
-autoBuyEggToggle.TextXAlignment = Enum.TextXAlignment.Left
-autoBuyEggToggle.Parent = shopFrame
-
-local eggCheck = Instance.new("TextLabel")
-eggCheck.Name = "Checkmark"
-eggCheck.Size = UDim2.new(0, 32, 1, 0)
-eggCheck.Position = UDim2.new(1, -36, 0, 0)
-eggCheck.BackgroundTransparency = 1
-eggCheck.Font = Enum.Font.SourceSansBold
-eggCheck.TextSize = 24
-eggCheck.TextColor3 = Color3.fromRGB(220, 220, 220)
-eggCheck.Text = ""
-eggCheck.Parent = autoBuyEggToggle
-
-local autoBuyEggState = false
-local autoBuyEggLoopRunning = false
-local function updateAutoBuyEggToggle()
-    if autoBuyEggState then
-        autoBuyEggToggle.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-        eggCheck.Text = "✅"
-    else
-        autoBuyEggToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-        eggCheck.Text = ""
-    end
-end
-updateAutoBuyEggToggle()
-
--- Only one connection for auto-buy egg toggle, fully automatic
-autoBuyEggToggle.MouseButton1Click:Connect(function()
-    autoBuyEggState = not autoBuyEggState
-    updateAutoBuyEggToggle()
-    if autoBuyEggState and not autoBuyEggLoopRunning then
-        autoBuyEggLoopRunning = true
-        task.spawn(function()
-            while autoBuyEggState do
-                for _, egg in ipairs(selectedEggs) do
-                    if isEggInStock(egg) then
-                        if buyEggRemote then
-                            buyEggRemote:FireServer(egg)
-                        end
-                    end
-                end
-                task.wait(0.1)
-            end
-            autoBuyEggLoopRunning = false
-        end)
-    end
-end)
-
-local autoBuySeedToggle = Instance.new("TextButton")
-autoBuySeedToggle.Name = "AutoBuySeedToggle"
-autoBuySeedToggle.Size = UDim2.new(1, -32, 0, 36)
-autoBuySeedToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-autoBuySeedToggle.Text = "AUTO BUY SEED"
-autoBuySeedToggle.Font = Enum.Font.SourceSansBold
-autoBuySeedToggle.TextSize = 20
-autoBuySeedToggle.TextColor3 = Color3.fromRGB(255,255,255)
-autoBuySeedToggle.BorderSizePixel = 0
-autoBuySeedToggle.TextXAlignment = Enum.TextXAlignment.Left
-autoBuySeedToggle.Parent = shopFrame
-
-local seedCheck = Instance.new("TextLabel")
-seedCheck.Name = "Checkmark"
-seedCheck.Size = UDim2.new(0, 32, 1, 0)
-seedCheck.Position = UDim2.new(1, -36, 0, 0)
-seedCheck.BackgroundTransparency = 1
-seedCheck.Font = Enum.Font.SourceSansBold
-seedCheck.TextSize = 24
-seedCheck.TextColor3 = Color3.fromRGB(220, 220, 220)
-seedCheck.Text = ""
-seedCheck.Parent = autoBuySeedToggle
-
-local autoBuySeedState = false
-local autoBuySeedLoopRunning = false
-local function updateAutoBuySeedToggle()
-    if autoBuySeedState then
-        autoBuySeedToggle.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-        seedCheck.Text = "✅"
-    else
-        autoBuySeedToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-        seedCheck.Text = ""
-    end
-end
-updateAutoBuySeedToggle()
-
--- Only one connection for auto-buy seed toggle, fully automatic
-autoBuySeedToggle.MouseButton1Click:Connect(function()
-    autoBuySeedState = not autoBuySeedState
-    updateAutoBuySeedToggle()
-    if autoBuySeedState and not autoBuySeedLoopRunning then
-        autoBuySeedLoopRunning = true
-        task.spawn(function()
-            while autoBuySeedState do
-                for _, seed in ipairs(selectedSeeds) do
-                    if isSeedInStock(seed) then
-                        if buySeedRemote then
-                            buySeedRemote:FireServer(seed)
-                        end
-                    end
-                end
-                task.wait(0.1)
-            end
-            autoBuySeedLoopRunning = false
-        end)
-    end
-end)
-
--- Egg Dropdown Button
-local eggDropdownBtn = Instance.new("TextButton")
-eggDropdownBtn.Name = "EggDropdownBtn"
-eggDropdownBtn.Size = UDim2.new(1, -40, 0, 44) -- Larger
-eggDropdownBtn.Position = UDim2.new(0, 20, 0, 20)
-eggDropdownBtn.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-eggDropdownBtn.Text = "BUY EGG:"
-eggDropdownBtn.Font = Enum.Font.SourceSansBold
-eggDropdownBtn.TextSize = 22
-eggDropdownBtn.TextColor3 = Color3.fromRGB(255,255,255)
-eggDropdownBtn.BorderSizePixel = 0
-eggDropdownBtn.TextXAlignment = Enum.TextXAlignment.Center
-eggDropdownBtn.Parent = shopFrame
-eggDropdownBtn.ZIndex = 2
-
--- Egg Dropdown ScrollingFrame
-local eggDropdownList = Instance.new("ScrollingFrame")
-eggDropdownList.Name = "EggDropdownList"
-eggDropdownList.Size = UDim2.new(1, -40, 0, 0)
-eggDropdownList.Position = UDim2.new(0, 20, 0, 64)
-eggDropdownList.BackgroundColor3 = Color3.fromRGB(60, 120, 180)
-eggDropdownList.BorderSizePixel = 0
-eggDropdownList.Visible = false
-eggDropdownList.Parent = shopFrame
-eggDropdownList.ZIndex = 3
-eggDropdownList.ClipsDescendants = true
-eggDropdownList.CanvasSize = UDim2.new(0, 0, 0, 0)
-eggDropdownList.ScrollBarThickness = 10 -- Thicker scrollbar
-
--- Full Egg List (Name, Price, Details)
+-- Dropdown Data
 local eggOptions = {
-    "Common Egg",
-    "Uncommon Egg",
-    "Rare Egg",
-    "Legendary Egg",
-    "Mythical Egg",
-    "Bug Egg",
-    "Exotic Bug Egg",
-    "Night Egg",
-    "Premium Night Egg",
-    "Bee Egg",
-    "Anti Bee Egg",
-    "Premium Anti Bee Egg",
-    "Common Summer Egg",
-    "Rare Summer Egg",
-    "Paradise Egg",
-    "Oasis Egg",
-    "Premium Oasis Egg"
+    "Common Egg", "Uncommon Egg", "Rare Egg", "Legendary Egg", "Mythical Egg", "Bug Egg", "Exotic Bug Egg", "Night Egg", "Premium Night Egg", "Bee Egg", "Anti Bee Egg", "Premium Anti Bee Egg", "Common Summer Egg", "Rare Summer Egg", "Paradise Egg", "Oasis Egg", "Premium Oasis Egg"
 }
 local eggDetails = {
     ["Common Egg"] = "50,000 | Golden Lab, Dog, Bunny (33.33% each)",
@@ -355,97 +331,8 @@ local eggDetails = {
     ["Oasis Egg"] = "10 | Meerkat, Sand Snake, Axolotl, Hyacinth Macaw, Fennec Fox",
     ["Premium Oasis Egg"] = "199 | Limited Time Shop"
 }
-local selectedEggs = {}
-local function updateEggDropdownText()
-    if #selectedEggs == 0 then
-        eggDropdownBtn.Text = "BUY EGG:"
-    else
-        eggDropdownBtn.Text = "BUY EGG: " .. table.concat(selectedEggs, ", ")
-    end
-end
-for i, name in ipairs(eggOptions) do
-    local opt = Instance.new("TextButton")
-    opt.Size = UDim2.new(1, 0, 0, 38)
-    opt.Position = UDim2.new(0, 0, 0, (i-1)*38)
-    opt.BackgroundColor3 = Color3.fromRGB(100, 170, 220)
-    opt.Text = name
-    opt.Font = Enum.Font.SourceSans
-    opt.TextSize = 20
-    opt.TextColor3 = Color3.fromRGB(255,255,255)
-    opt.BorderSizePixel = 0
-    opt.Parent = eggDropdownList
-    opt.ZIndex = 4
-    -- Tooltip for details
-    opt.MouseEnter:Connect(function()
-        opt.Text = name .. "\n" .. (eggDetails[name] or "")
-        opt.TextWrapped = true
-    end)
-    opt.MouseLeave:Connect(function()
-        opt.Text = name
-        opt.TextWrapped = false
-    end)
-    opt.MouseButton1Click:Connect(function()
-        local found = false
-        for j, v in ipairs(selectedEggs) do
-            if v == name then table.remove(selectedEggs, j) found = true break end
-        end
-        if not found then table.insert(selectedEggs, name) end
-        updateEggDropdownText()
-        opt.BackgroundColor3 = found and Color3.fromRGB(100, 170, 220) or Color3.fromRGB(60, 200, 120)
-    end)
-end
-updateEggDropdownText()
-eggDropdownList.CanvasSize = UDim2.new(0, 0, 0, #eggOptions * 38)
-
--- Seed Dropdown Button
-local seedDropdownBtn = Instance.new("TextButton")
-seedDropdownBtn.Name = "SeedDropdownBtn"
-seedDropdownBtn.Size = UDim2.new(1, -40, 0, 44)
-seedDropdownBtn.Position = UDim2.new(0, 20, 0, 74 + (#eggOptions > 0 and (#eggOptions * 38) or 0))
-seedDropdownBtn.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-seedDropdownBtn.Text = "BUY SEEDS:"
-seedDropdownBtn.Font = Enum.Font.SourceSansBold
-seedDropdownBtn.TextSize = 22
-seedDropdownBtn.TextColor3 = Color3.fromRGB(255,255,255)
-seedDropdownBtn.BorderSizePixel = 0
-seedDropdownBtn.TextXAlignment = Enum.TextXAlignment.Center
-seedDropdownBtn.Parent = shopFrame
-seedDropdownBtn.ZIndex = 2
-
--- Seed Dropdown ScrollingFrame
-local seedDropdownList = Instance.new("ScrollingFrame")
-seedDropdownList.Name = "SeedDropdownList"
-seedDropdownList.Size = UDim2.new(1, -40, 0, 0)
-seedDropdownList.Position = UDim2.new(0, 20, 0, 118 + (#eggOptions > 0 and (#eggOptions * 38) or 0))
-seedDropdownList.BackgroundColor3 = Color3.fromRGB(60, 120, 180)
-seedDropdownList.BorderSizePixel = 0
-seedDropdownList.Visible = false
-seedDropdownList.Parent = shopFrame
-seedDropdownList.ZIndex = 3
-seedDropdownList.ClipsDescendants = true
-seedDropdownList.CanvasSize = UDim2.new(0, 0, 0, 0)
-seedDropdownList.ScrollBarThickness = 10
-
--- Full Seed List (Name, Price, etc)
 local seedOptions = {
-    "Carrot",
-    "Strawberry",
-    "Blueberry",
-    "Tomato",
-    "Cauliflower",
-    "Watermelon",
-    "Rafflesia",
-    "Green Apple",
-    "Avocado",
-    "Banana",
-    "Pineapple",
-    "Kiwi",
-    "Bell Pepper",
-    "Prickly Pear",
-    "Loquat",
-    "Feijoa",
-    "Pitcher Plant",
-    "Sugar Apple"
+    "Carrot", "Strawberry", "Blueberry", "Tomato", "Cauliflower", "Watermelon", "Rafflesia", "Green Apple", "Avocado", "Banana", "Pineapple", "Kiwi", "Bell Pepper", "Prickly Pear", "Loquat", "Feijoa", "Pitcher Plant", "Sugar Apple"
 }
 local seedDetails = {
     ["Carrot"] = "10 | Common | 5-25 | ✗/✓",
@@ -467,212 +354,201 @@ local seedDetails = {
     ["Pitcher Plant"] = "7,500,000 | Divine | 1 | ✓/✓",
     ["Sugar Apple"] = "25,000,000 | Prismatic | 1"
 }
-local selectedSeeds = {}
-local function updateSeedDropdownText()
-    if #selectedSeeds == 0 then
-        seedDropdownBtn.Text = "BUY SEEDS:"
-    else
-        seedDropdownBtn.Text = "BUY SEEDS: " .. table.concat(selectedSeeds, ", ")
-    end
-end
-for i, name in ipairs(seedOptions) do
-    local opt = Instance.new("TextButton")
-    opt.Size = UDim2.new(1, 0, 0, 38)
-    opt.Position = UDim2.new(0, 0, 0, (i-1)*38)
-    opt.BackgroundColor3 = Color3.fromRGB(100, 170, 220)
-    opt.Text = name
-    opt.Font = Enum.Font.SourceSans
-    opt.TextSize = 20
-    opt.TextColor3 = Color3.fromRGB(255,255,255)
-    opt.BorderSizePixel = 0
-    opt.Parent = seedDropdownList
-    opt.ZIndex = 4
-    -- Tooltip for details
-    opt.MouseEnter:Connect(function()
-        opt.Text = name .. "\n" .. (seedDetails[name] or "")
-        opt.TextWrapped = true
-    end)
-    opt.MouseLeave:Connect(function()
-        opt.Text = name
-        opt.TextWrapped = false
-    end)
-    opt.MouseButton1Click:Connect(function()
-        local found = false
-        for j, v in ipairs(selectedSeeds) do
-            if v == name then table.remove(selectedSeeds, j) found = true break end
-        end
-        if not found then table.insert(selectedSeeds, name) end
-        updateSeedDropdownText()
-        opt.BackgroundColor3 = found and Color3.fromRGB(100, 170, 220) or Color3.fromRGB(60, 200, 120)
-    end)
-end
-updateSeedDropdownText()
-seedDropdownList.CanvasSize = UDim2.new(0, 0, 0, #seedOptions * 38)
-
--- GEAR DROPDOWN DATA
 local gearOptions = {
-    {name = "Watering Can", details = "Speeds up Plant Growth, 10 uses.", price = "50,000", rarity = "Common"},
-    {name = "Trowel", details = "Moves Plants, five uses.", price = "100,000", rarity = "Uncommon"},
-    {name = "Recall Wrench", details = "Teleports to Gear Shop, five uses.", price = "150,000", rarity = "Uncommon"},
-    {name = "Basic Sprinkler", details = "Increases Growth Speed and Fruit Size, lasts five minutes.", price = "25,000", rarity = "Rare"},
-    {name = "Advanced Sprinkler", details = "Increases Growth Speed and Mutation chances, lasts five minutes.", price = "50,000", rarity = "Legendary"},
-    {name = "Godly Sprinkler", details = "Increases Growth Speed, Mutation chances and Fruit Size, lasts five minutes.", price = "120,000", rarity = "Mythical"},
-    {name = "Magnifying Glass", details = "Inspect plants to reveal the value without collecting them.", price = "10,000,000", rarity = "Mythical"},
-    {name = "Tanning Mirror", details = "Redirects Sun Beams 10 times before being destroyed.", price = "1,000,000", rarity = "Mythical"},
-    {name = "Master Sprinkler", details = "Greatly increases Growth Speed, Mutation Chances and Fruit Size, lasts 10 minutes.", price = "10,000,000", rarity = "Divine"},
-    {name = "Cleaning Spray", details = "Cleans mutations off fruit, 10 uses.", price = "15,000,000", rarity = "Divine"},
-    {name = "Favourite Tool", details = "Favourites your fruit plants to prevent collecting, 20 uses.", price = "20,000,000", rarity = "Divine"},
-    {name = "Harvest Tool", details = "Harvests all fruit from a chosen plant, 5 uses.", price = "30,000,000", rarity = "Divine"},
-    {name = "Friendship Pot", details = "A flower pot to share with a friend!", price = "15,000,000", rarity = "Divine"},
+    "Watering Can", "Trowel", "Recall Wrench", "Basic Sprinkler", "Advanced Sprinkler", "Godly Sprinkler", "Magnifying Glass", "Tanning Mirror", "Master Sprinkler", "Cleaning Spray", "Favourite Tool", "Harvest Tool", "Friendship Pot"
 }
-local selectedGears = {}
+local gearDetails = {
+    ["Watering Can"] = "Speeds up Plant Growth, 10 uses. | 50,000 | Common",
+    ["Trowel"] = "Moves Plants, five uses. | 100,000 | Uncommon",
+    ["Recall Wrench"] = "Teleports to Gear Shop, five uses. | 150,000 | Uncommon",
+    ["Basic Sprinkler"] = "Increases Growth Speed and Fruit Size, lasts five minutes. | 25,000 | Rare",
+    ["Advanced Sprinkler"] = "Increases Growth Speed and Mutation chances, lasts five minutes. | 50,000 | Legendary",
+    ["Godly Sprinkler"] = "Increases Growth Speed, Mutation chances and Fruit Size, lasts five minutes. | 120,000 | Mythical",
+    ["Magnifying Glass"] = "Inspect plants to reveal the value without collecting them. | 10,000,000 | Mythical",
+    ["Tanning Mirror"] = "Redirects Sun Beams 10 times before being destroyed. | 1,000,000 | Mythical",
+    ["Master Sprinkler"] = "Greatly increases Growth Speed, Mutation Chances and Fruit Size, lasts 10 minutes. | 10,000,000 | Divine",
+    ["Cleaning Spray"] = "Cleans mutations off fruit, 10 uses. | 15,000,000 | Divine",
+    ["Favourite Tool"] = "Favourites your fruit plants to prevent collecting, 20 uses. | 20,000,000 | Divine",
+    ["Harvest Tool"] = "Harvests all fruit from a chosen plant, 5 uses. | 30,000,000 | Divine",
+    ["Friendship Pot"] = "A flower pot to share with a friend! | 15,000,000 | Divine"
+}
 
--- GEAR DROPDOWN BUTTON (under seed dropdown)
-local gearDropdownBtn = Instance.new("TextButton")
-gearDropdownBtn.Name = "GearDropdownBtn"
-gearDropdownBtn.Size = UDim2.new(1, -40, 0, 44)
-gearDropdownBtn.Position = UDim2.new(0, 20, 0, 118 + (#seedOptions > 0 and (#seedOptions * 38) or 0))
-gearDropdownBtn.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-gearDropdownBtn.Text = "GEAR:"
-gearDropdownBtn.Font = Enum.Font.SourceSansBold
-gearDropdownBtn.TextSize = 22
-gearDropdownBtn.TextColor3 = Color3.fromRGB(255,255,255)
-gearDropdownBtn.BorderSizePixel = 0
-gearDropdownBtn.TextXAlignment = Enum.TextXAlignment.Center
-gearDropdownBtn.Parent = shopFrame
-gearDropdownBtn.ZIndex = 2
+-- Helper: Create Dropdown
+local function createDropdown(parent, name, options, details, yPos, prefix)
+    local btn = Instance.new("TextButton")
+    btn.Name = name .. "DropdownBtn"
+    btn.Size = UDim2.new(1, -40, 0, 44)
+    btn.Position = UDim2.new(0, 20, 0, yPos)
+    btn.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
+    btn.Text = prefix
+    btn.Font = Enum.Font.SourceSansBold
+    btn.TextSize = 22
+    btn.TextColor3 = Color3.fromRGB(255,255,255)
+    btn.BorderSizePixel = 0
+    btn.TextXAlignment = Enum.TextXAlignment.Center
+    btn.Parent = parent
+    btn.ZIndex = 2
 
--- GEAR DROPDOWN LIST
-local gearDropdownList = Instance.new("ScrollingFrame")
-gearDropdownList.Name = "GearDropdownList"
-gearDropdownList.Size = UDim2.new(1, -40, 0, 0)
-gearDropdownList.Position = UDim2.new(0, 20, 0, 162 + (#seedOptions > 0 and (#seedOptions * 38) or 0))
-gearDropdownList.BackgroundColor3 = Color3.fromRGB(60, 120, 180)
-gearDropdownList.BorderSizePixel = 0
-gearDropdownList.Visible = false
-gearDropdownList.Parent = shopFrame
-gearDropdownList.ZIndex = 3
-gearDropdownList.ClipsDescendants = true
-gearDropdownList.CanvasSize = UDim2.new(0, 0, 0, 0)
-gearDropdownList.ScrollBarThickness = 10
+    local list = Instance.new("ScrollingFrame")
+    list.Name = name .. "DropdownList"
+    list.Size = UDim2.new(1, -40, 0, 0)
+    list.Position = UDim2.new(0, 20, 0, yPos + 44)
+    list.BackgroundColor3 = Color3.fromRGB(60, 120, 180)
+    list.BorderSizePixel = 0
+    list.Visible = false
+    list.Parent = parent
+    list.ZIndex = 3
+    list.ClipsDescendants = true
+    list.CanvasSize = UDim2.new(0, 0, 0, 0)
+    list.ScrollBarThickness = 10
 
-local function updateGearDropdownText()
-    if #selectedGears == 0 then
-        gearDropdownBtn.Text = "GEAR:"
+    local selected = {}
+    for i, option in ipairs(options) do
+        local opt = Instance.new("TextButton")
+        opt.Size = UDim2.new(1, 0, 0, 38)
+        opt.Position = UDim2.new(0, 0, 0, (i-1)*38)
+        opt.BackgroundColor3 = Color3.fromRGB(100, 170, 220)
+        opt.Text = option
+        opt.Font = Enum.Font.SourceSans
+        opt.TextSize = 20
+        opt.TextColor3 = Color3.fromRGB(255,255,255)
+        opt.BorderSizePixel = 0
+        opt.Parent = list
+        opt.ZIndex = 4
+        opt.MouseEnter:Connect(function()
+            opt.Text = option .. "\n" .. (details[option] or "")
+            opt.TextWrapped = true
+        end)
+        opt.MouseLeave:Connect(function()
+            opt.Text = option
+            opt.TextWrapped = false
+        end)
+        opt.MouseButton1Click:Connect(function()
+            local found = false
+            for j, v in ipairs(selected) do
+                if v == option then table.remove(selected, j) found = true break end
+            end
+            if not found then table.insert(selected, option) end
+            btn.Text = (#selected == 0) and prefix or (prefix .. " " .. table.concat(selected, ", "))
+            opt.BackgroundColor3 = found and Color3.fromRGB(100, 170, 220) or Color3.fromRGB(60, 200, 120)
+        end)
+    end
+    btn.Text = (#selected == 0) and prefix or (prefix .. " " .. table.concat(selected, ", "))
+    list.CanvasSize = UDim2.new(0, 0, 0, #options * 38)
+    btn.MouseButton1Click:Connect(function()
+        list.Visible = not list.Visible
+        updateShopTogglePositions()
+    end)
+    return btn, list, selected
+end
+
+-- Create Dropdowns
+local eggDropdownBtn, eggDropdownList, selectedEggs = createDropdown(shopFrame, "Egg", eggOptions, eggDetails, 20, "BUY EGG:")
+local seedDropdownBtn, seedDropdownList, selectedSeeds = createDropdown(shopFrame, "Seed", seedOptions, seedDetails, 74 + (#eggOptions * 38), "BUY SEEDS:")
+local gearDropdownBtn, gearDropdownList, selectedGear = createDropdown(shopFrame, "Gear", gearOptions, gearDetails, 128 + (#eggOptions * 38) + (#seedOptions * 38), "BUY GEAR:")
+
+-- Helper: Create Toggle
+local function createAutoBuyToggle(parent, name, yPos)
+    local toggle = Instance.new("TextButton")
+    toggle.Name = name .. "Toggle"
+    toggle.Size = UDim2.new(1, -32, 0, 36)
+    toggle.Position = UDim2.new(0, 20, 0, yPos)
+    toggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
+    toggle.Text = "AUTO BUY " .. name:upper()
+    toggle.Font = Enum.Font.SourceSansBold
+    toggle.TextSize = 20
+    toggle.TextColor3 = Color3.fromRGB(255,255,255)
+    toggle.BorderSizePixel = 0
+    toggle.TextXAlignment = Enum.TextXAlignment.Left
+    toggle.Parent = parent
+    toggle.ZIndex = 2
+
+    local check = Instance.new("TextLabel")
+    check.Name = "Checkmark"
+    check.Size = UDim2.new(0, 32, 1, 0)
+    check.Position = UDim2.new(1, -36, 0, 0)
+    check.BackgroundTransparency = 1
+    check.Font = Enum.Font.SourceSansBold
+    check.TextSize = 24
+    check.TextColor3 = Color3.fromRGB(220, 220, 220)
+    check.Text = ""
+    check.Parent = toggle
+    return toggle, check
+end
+
+local autoBuyEggToggle, eggCheck = createAutoBuyToggle(shopFrame, "Egg", 0)
+local autoBuySeedToggle, seedCheck = createAutoBuyToggle(shopFrame, "Seed", 54)
+local autoBuyGearToggle, gearCheck = createAutoBuyToggle(shopFrame, "Gear", 108)
+
+local autoBuyEggState, autoBuySeedState, autoBuyGearState = false, false, false
+
+local function updateAutoBuyToggle(toggle, check, state)
+    if state then
+        toggle.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
+        check.Text = "✅"
     else
-        local names = {}
-        for _, g in ipairs(selectedGears) do table.insert(names, g) end
-        gearDropdownBtn.Text = "GEAR: " .. table.concat(names, ", ")
+        toggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
+        check.Text = ""
     end
 end
-for i, gear in ipairs(gearOptions) do
-    local opt = Instance.new("TextButton")
-    opt.Size = UDim2.new(1, 0, 0, 38)
-    opt.Position = UDim2.new(0, 0, 0, (i-1)*38)
-    opt.BackgroundColor3 = Color3.fromRGB(100, 170, 220)
-    opt.Text = gear.name
-    opt.Font = Enum.Font.SourceSans
-    opt.TextSize = 20
-    opt.TextColor3 = Color3.fromRGB(255,255,255)
-    opt.BorderSizePixel = 0
-    opt.Parent = gearDropdownList
-    opt.ZIndex = 4
-    opt.MouseEnter:Connect(function()
-        opt.Text = gear.name .. "\n" .. gear.details .. "\n" .. gear.price .. " | " .. gear.rarity
-        opt.TextWrapped = true
-    end)
-    opt.MouseLeave:Connect(function()
-        opt.Text = gear.name
-        opt.TextWrapped = false
-    end)
-    opt.MouseButton1Click:Connect(function()
-        local found = false
-        for j, v in ipairs(selectedGears) do
-            if v == gear.name then table.remove(selectedGears, j) found = true break end
-        end
-        if not found then table.insert(selectedGears, gear.name) end
-        updateGearDropdownText()
-        opt.BackgroundColor3 = found and Color3.fromRGB(100, 170, 220) or Color3.fromRGB(60, 200, 120)
-    end)
-end
-updateGearDropdownText()
-gearDropdownList.CanvasSize = UDim2.new(0, 0, 0, #gearOptions * 38)
+updateAutoBuyToggle(autoBuyEggToggle, eggCheck, autoBuyEggState)
+updateAutoBuyToggle(autoBuySeedToggle, seedCheck, autoBuySeedState)
+updateAutoBuyToggle(autoBuyGearToggle, gearCheck, autoBuyGearState)
 
--- AUTO BUY GEAR TOGGLE
-local autoBuyGearToggle = Instance.new("TextButton")
-autoBuyGearToggle.Name = "AutoBuyGearToggle"
-autoBuyGearToggle.Size = UDim2.new(1, -32, 0, 36)
-autoBuyGearToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-autoBuyGearToggle.Text = "AUTO BUY GEAR"
-autoBuyGearToggle.Font = Enum.Font.SourceSansBold
-autoBuyGearToggle.TextSize = 20
-autoBuyGearToggle.TextColor3 = Color3.fromRGB(255,255,255)
-autoBuyGearToggle.BorderSizePixel = 0
-autoBuyGearToggle.TextXAlignment = Enum.TextXAlignment.Left
-autoBuyGearToggle.Parent = shopFrame
+-- Automation Remotes
+local buyEggRemote = ReplicatedStorage:FindFirstChild("GameEvents") and ReplicatedStorage.GameEvents:FindFirstChild("BuyPetEgg")
+local buySeedRemote = ReplicatedStorage:FindFirstChild("GameEvents") and ReplicatedStorage.GameEvents:FindFirstChild("BuySeedStock")
+local buyGearRemote = ReplicatedStorage:FindFirstChild("GameEvents") and ReplicatedStorage.GameEvents:FindFirstChild("BuyGearStock")
 
-local gearCheck = Instance.new("TextLabel")
-gearCheck.Name = "Checkmark"
-gearCheck.Size = UDim2.new(0, 32, 1, 0)
-gearCheck.Position = UDim2.new(1, -36, 0, 0)
-gearCheck.BackgroundTransparency = 1
-gearCheck.Font = Enum.Font.SourceSansBold
-gearCheck.TextSize = 24
-gearCheck.TextColor3 = Color3.fromRGB(220, 220, 220)
-gearCheck.Text = ""
-gearCheck.Parent = autoBuyGearToggle
+-- Helper: Check if in stock (stub, should be replaced with real stock check if available)
+local function isEggInStock(eggName) return true end
+local function isSeedInStock(seedName) return true end
+local function isGearInStock(gearName) return true end
 
-local autoBuyGearState = false
-local autoBuyGearLoopRunning = false
-local function updateAutoBuyGearToggle()
-    if autoBuyGearState then
-        autoBuyGearToggle.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-        gearCheck.Text = "✅"
-    else
-        autoBuyGearToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-        gearCheck.Text = ""
-    end
-end
-updateAutoBuyGearToggle()
-
-autoBuyGearToggle.MouseButton1Click:Connect(function()
-    autoBuyGearState = not autoBuyGearState
-    updateAutoBuyGearToggle()
-    if autoBuyGearState and not autoBuyGearLoopRunning then
-        autoBuyGearLoopRunning = true
-        task.spawn(function()
-            while autoBuyGearState do
-                for _, gear in ipairs(selectedGears) do
-                    if isGearInStock(gear) then
-                        if buyGearRemote then
-                            buyGearRemote:FireServer(gear)
+-- Auto-buy logic
+local function startAutoBuyLoop(stateVar, selectedList, remote, isInStock)
+    task.spawn(function()
+        while true do
+            if stateVar[1] then
+                for _, item in ipairs(selectedList) do
+                    if isInStock(item) then
+                        if remote then
+                            remote:FireServer(item)
                         end
                     end
                 end
-                task.wait(0.1)
             end
-            autoBuyGearLoopRunning = false
-        end)
-    end
-end)
-
--- Helper: Check if a gear is in stock (stub, should be replaced with real stock check if available)
-local function isGearInStock(gearName)
-    return true -- Assume always in stock for now
+            task.wait(0.1)
+        end
+    end)
 end
 
--- Automation Remote for Gear
-local buyGearRemote = ReplicatedStorage:FindFirstChild("GameEvents"):FindFirstChild("BuyGearStock")
+-- Toggle connections
+autoBuyEggToggle.MouseButton1Click:Connect(function()
+    autoBuyEggState = not autoBuyEggState
+    updateAutoBuyToggle(autoBuyEggToggle, eggCheck, autoBuyEggState)
+end)
+autoBuySeedToggle.MouseButton1Click:Connect(function()
+    autoBuySeedState = not autoBuySeedState
+    updateAutoBuyToggle(autoBuySeedToggle, seedCheck, autoBuySeedState)
+end)
+autoBuyGearToggle.MouseButton1Click:Connect(function()
+    autoBuyGearState = not autoBuyGearState
+    updateAutoBuyToggle(autoBuyGearToggle, gearCheck, autoBuyGearState)
+end)
 
--- Update shop toggle positions to include gear dropdown and toggle
-local oldUpdateShopTogglePositions = updateShopTogglePositions
+-- Start auto-buy loops on script load
+startAutoBuyLoop({function() return autoBuyEggState end}, selectedEggs, buyEggRemote, isEggInStock)
+startAutoBuyLoop({function() return autoBuySeedState end}, selectedSeeds, buySeedRemote, isSeedInStock)
+startAutoBuyLoop({function() return autoBuyGearState end}, selectedGear, buyGearRemote, isGearInStock)
+
+-- Update toggle positions based on dropdowns
 function updateShopTogglePositions()
     local y = 20
     local contentBottom = shopFrame.AbsolutePosition.Y + shopFrame.AbsoluteSize.Y
-    -- Egg Dropdown Button
+    -- Egg Dropdown
     eggDropdownBtn.Position = UDim2.new(0, 20, 0, y)
     y = y + 44
-    -- Egg Dropdown List
     if eggDropdownList.Visible then
         local dropdownTop = shopFrame.AbsolutePosition.Y + y
         local maxHeight = contentBottom - dropdownTop - 20
@@ -686,10 +562,9 @@ function updateShopTogglePositions()
         eggDropdownList.Position = UDim2.new(0, 20, 0, y)
         eggDropdownList.Size = UDim2.new(1, -40, 0, 0)
     end
-    -- Seed Dropdown Button
+    -- Seed Dropdown
     seedDropdownBtn.Position = UDim2.new(0, 20, 0, y)
     y = y + 44
-    -- Seed Dropdown List
     if seedDropdownList.Visible then
         local dropdownTop = shopFrame.AbsolutePosition.Y + y
         local maxHeight = contentBottom - dropdownTop - 20
@@ -703,10 +578,9 @@ function updateShopTogglePositions()
         seedDropdownList.Position = UDim2.new(0, 20, 0, y)
         seedDropdownList.Size = UDim2.new(1, -40, 0, 0)
     end
-    -- Gear Dropdown Button
+    -- Gear Dropdown
     gearDropdownBtn.Position = UDim2.new(0, 20, 0, y)
     y = y + 44
-    -- Gear Dropdown List
     if gearDropdownList.Visible then
         local dropdownTop = shopFrame.AbsolutePosition.Y + y
         local maxHeight = contentBottom - dropdownTop - 20
@@ -726,14 +600,19 @@ function updateShopTogglePositions()
     autoBuyGearToggle.Position = UDim2.new(0, 20, 0, y + 18 + 108)
 end
 
--- Dropdown button logic
+eggDropdownBtn.MouseButton1Click:Connect(function()
+    eggDropdownList.Visible = not eggDropdownList.Visible
+    updateShopTogglePositions()
+end)
+seedDropdownBtn.MouseButton1Click:Connect(function()
+    seedDropdownList.Visible = not seedDropdownList.Visible
+    updateShopTogglePositions()
+end)
 gearDropdownBtn.MouseButton1Click:Connect(function()
     gearDropdownList.Visible = not gearDropdownList.Visible
     updateShopTogglePositions()
 end)
 
--- Hide dropdowns if clicking elsewhere (add gear)
-local oldUserInputBegan = UserInputService.InputBegan
 UserInputService.InputBegan:Connect(function(input, processed)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
         local changed = false
@@ -753,13 +632,95 @@ UserInputService.InputBegan:Connect(function(input, processed)
     end
 end)
 
--- Auto-buy gear loop (background)
+-- Hide dropdowns if clicking elsewhere
+UserInputService.InputBegan:Connect(function(input, processed)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        local changed = false
+        if eggDropdownList.Visible and not eggDropdownBtn:IsAncestorOf(input.Target) then
+            eggDropdownList.Visible = false
+            changed = true
+        end
+        if seedDropdownList.Visible and not seedDropdownBtn:IsAncestorOf(input.Target) then
+            seedDropdownList.Visible = false
+            changed = true
+        end
+        if gearDropdownList.Visible and not gearDropdownBtn:IsAncestorOf(input.Target) then
+            gearDropdownList.Visible = false
+            changed = true
+        end
+        if changed then updateShopTogglePositions() end
+    end
+end)
+
+-- Automation Remotes
+local buyEggRemote = ReplicatedStorage:FindFirstChild("GameEvents"):FindFirstChild("BuyPetEgg")
+local buySeedRemote = ReplicatedStorage:FindFirstChild("GameEvents"):FindFirstChild("BuySeedStock")
+local buyGearRemote = ReplicatedStorage:FindFirstChild("GameEvents"):FindFirstChild("BuyGearStock")
+
+-- Helper: Check if an egg/seed is in stock (stub, should be replaced with real stock check if available)
+local function isEggInStock(eggName)
+    -- TODO: Replace with real stock check if possible
+    return true -- Assume always in stock for now
+end
+local function isSeedInStock(seedName)
+    -- TODO: Replace with real stock check if possible
+    return true -- Assume always in stock for now
+end
+local function isGearInStock(gearName)
+    -- TODO: Replace with real stock check if possible
+    return true -- Assume always in stock for now
+end
+
+-- Auto-buy logic
+local autoBuyEggLoopRunning = false
+local autoBuySeedLoopRunning = false
+local autoBuyGearLoopRunning = false
+
+-- Start auto-buy egg loop on script load
+if not autoBuyEggLoopRunning then
+    autoBuyEggLoopRunning = true
+    task.spawn(function()
+        while true do
+            if autoBuyEggState then
+                for _, egg in ipairs(selectedEggs) do
+                    if isEggInStock(egg) then
+                        if buyEggRemote then
+                            buyEggRemote:FireServer(egg)
+                        end
+                    end
+                end
+            end
+            task.wait(0.1)
+        end
+    end)
+end
+
+-- Start auto-buy seed loop on script load
+if not autoBuySeedLoopRunning then
+    autoBuySeedLoopRunning = true
+    task.spawn(function()
+        while true do
+            if autoBuySeedState then
+                for _, seed in ipairs(selectedSeeds) do
+                    if isSeedInStock(seed) then
+                        if buySeedRemote then
+                            buySeedRemote:FireServer(seed)
+                        end
+                    end
+                end
+            end
+            task.wait(0.1)
+        end
+    end)
+end
+
+-- Start auto-buy gear loop on script load
 if not autoBuyGearLoopRunning then
     autoBuyGearLoopRunning = true
     task.spawn(function()
         while true do
             if autoBuyGearState then
-                for _, gear in ipairs(selectedGears) do
+                for _, gear in ipairs(selectedGear) do
                     if isGearInStock(gear) then
                         if buyGearRemote then
                             buyGearRemote:FireServer(gear)
@@ -806,6 +767,13 @@ local function hideUI()
 end
 local function showUI()
     sidebar.Visible = true
+    showUIButton.Visible = false
+end
+closeBtn.MouseButton1Click:Connect(hideUI)
+showUIButton.MouseButton1Click:Connect(showUI)
+minimizeBtn.MouseButton1Click:Connect(function()
+    sidebar.Visible = not sidebar.Visible
+    showUIButton.Visible = not sidebar.Visible
 end)
 UserInputService.InputBegan:Connect(function(input, processed)
     if not processed and input.KeyCode == Enum.KeyCode.RightShift then
