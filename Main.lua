@@ -1,687 +1,311 @@
 --[[
-GAG SCRIPT BY:BREAD
-Modern Sidebar GUI (Restarted)
+    Grow a Garden Modular Auto Script UI
+    Author: GitHub Copilot
+    Features: Four-panel UI, auto toggles, remote bindings, anti-AFK, cleanup
 --]]
 
--- Services
+--// Services
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 
--- Main GUI
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "GAG_SidebarGUI"
-screenGui.ResetOnSpawn = false
-screenGui.IgnoreGuiInset = true
-screenGui.Parent = playerGui
+--// RemoteEvent Preload List (add more as needed)
+local remoteNames = {
+    -- Event Remotes
+    "LikeGarden", "SunStrike", "MeteorStrike", "PromptRSVP", "SummerHarvestSubmitRemoteEvent", "FireworkLaunch", "NightQuestRemoteEvent",
+    -- Shop Remotes
+    "BuySeedStock", "BuyPetEgg", "BuyTravelingMerchantShopStock", "BuyNightEventShopStock", "BuyEasterStock", "BuyGearStock", "BuyCosmeticCrate", "DeveloperPurchase",
+    -- Farm Remotes
+    "Plant_RE", "HarvestRemote", "Sell_Inventory", "SprinklerService", "Water_RE", "TrowelRemote", "BeeBolt", "FireDrop",
+    -- Utility Remotes
+    "ClaimableCodeService", "Prompt_Friend", "GiftPet", "SortBackpackEvent", "CraftingGlobalObjectService", "ExperienceNotificationServicePrompterController", "HighlightRemote", "DisplayChatMessage", "PlaySound",
+    -- Add all other remotes you want to preload here...
+}
 
--- Sidebar Frame
-local sidebar = Instance.new("Frame")
-sidebar.Name = "Sidebar"
-sidebar.Size = UDim2.new(0, 520, 0, 480) -- Increased width and height
-sidebar.Position = UDim2.new(0.5, -260, 0.5, -240)
-sidebar.BackgroundColor3 = Color3.fromRGB(120, 130, 150)
-sidebar.BorderSizePixel = 0
-sidebar.Parent = screenGui
-sidebar.Visible = true
+--// Remote Cache
+local Remotes = {}
 
--- Top Bar
-local topBar = Instance.new("Frame")
-topBar.Name = "TopBar"
-topBar.Size = UDim2.new(1, 0, 0, 44) -- Increased height
-topBar.Position = UDim2.new(0, 0, 0, 0)
-topBar.BackgroundColor3 = Color3.fromRGB(80, 90, 110)
-topBar.BorderSizePixel = 0
-topBar.Parent = sidebar
-
-local topBarTitle = Instance.new("TextLabel")
-topBarTitle.Name = "TopBarTitle"
-topBarTitle.Size = UDim2.new(1, -80, 1, 0)
-topBarTitle.Position = UDim2.new(0, 12, 0, 0)
-topBarTitle.BackgroundTransparency = 1
-topBarTitle.Text = "GAG SCRIPT BY:BREAD"
-topBarTitle.Font = Enum.Font.SourceSansBold
-topBarTitle.TextSize = 24
-topBarTitle.TextColor3 = Color3.fromRGB(40, 40, 40)
-topBarTitle.TextXAlignment = Enum.TextXAlignment.Left
-topBarTitle.Parent = topBar
-
-local minimizeBtn = Instance.new("TextButton")
-minimizeBtn.Name = "MinimizeBtn"
-minimizeBtn.Size = UDim2.new(0, 32, 1, 0)
-minimizeBtn.Position = UDim2.new(1, -64, 0, 0)
-minimizeBtn.BackgroundColor3 = Color3.fromRGB(80, 90, 110)
-minimizeBtn.Text = "_"
-minimizeBtn.Font = Enum.Font.SourceSansBold
-minimizeBtn.TextSize = 22
-minimizeBtn.TextColor3 = Color3.fromRGB(0,0,0)
-minimizeBtn.Parent = topBar
-
-local closeBtn = Instance.new("TextButton")
-closeBtn.Name = "CloseBtn"
-closeBtn.Size = UDim2.new(0, 32, 1, 0)
-closeBtn.Position = UDim2.new(1, -32, 0, 0)
-closeBtn.BackgroundColor3 = Color3.fromRGB(120, 40, 40)
-closeBtn.Text = "✕"
-closeBtn.Font = Enum.Font.SourceSansBold
-closeBtn.TextSize = 22
-closeBtn.TextColor3 = Color3.fromRGB(255,255,255)
-closeBtn.Parent = topBar
-
--- Sidebar Tabs
-local tabNames = {"EVENT", "SHOP", "FARM"}
-local tabButtons = {}
-for i, name in ipairs(tabNames) do
-    local tabBtn = Instance.new("TextButton")
-    tabBtn.Name = name .. "TabBtn"
-    tabBtn.Size = UDim2.new(0, 120, 0, 54) -- Increased width and height
-    tabBtn.Position = UDim2.new(0, 0, 0, 44 + (i-1)*54)
-    tabBtn.BackgroundColor3 = i == 1 and Color3.fromRGB(220, 160, 80) or Color3.fromRGB(80, 90, 110)
-    tabBtn.Text = name
-    tabBtn.Font = Enum.Font.SourceSansBold
-    tabBtn.TextSize = 24
-    tabBtn.TextColor3 = Color3.fromRGB(40, 40, 40)
-    tabBtn.BorderSizePixel = 0
-    tabBtn.Parent = sidebar
-    tabButtons[name] = tabBtn
-end
-
--- Vertical Black Line
-local navLine = Instance.new("Frame")
-navLine.Size = UDim2.new(0, 4, 1, -44)
-navLine.Position = UDim2.new(0, 120, 0, 44)
-navLine.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-navLine.BorderSizePixel = 0
-navLine.Parent = sidebar
-
--- Main Content Frame
-local contentFrame = Instance.new("Frame")
-contentFrame.Name = "ContentFrame"
-contentFrame.Size = UDim2.new(1, -124, 1, -44)
-contentFrame.Position = UDim2.new(0, 124, 0, 44)
-contentFrame.BackgroundColor3 = Color3.fromRGB(120, 130, 150)
-contentFrame.BorderSizePixel = 0
-contentFrame.Parent = sidebar
-
--- Tab Content
-local tabContent = {}
-for _, name in ipairs(tabNames) do
-    local frame = Instance.new("Frame")
-    frame.Name = name .. "TabContent"
-    frame.Size = UDim2.new(1, 0, 1, 0)
-    frame.BackgroundTransparency = 1
-    frame.Visible = (name == "EVENT")
-    frame.Parent = contentFrame
-    tabContent[name] = frame
-end
-
--- EVENT TAB CONTENT
-local eventFrame = tabContent["EVENT"]
-local eventHeader = Instance.new("TextLabel")
-eventHeader.Size = UDim2.new(1, -32, 0, 40)
-eventHeader.Position = UDim2.new(0, 16, 0, 16)
-eventHeader.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-eventHeader.Text = "SUMMER HARVEST"
-eventHeader.Font = Enum.Font.SourceSansBold
-eventHeader.TextSize = 22
-eventHeader.TextColor3 = Color3.fromRGB(255,255,255)
-eventHeader.BorderSizePixel = 0
-eventHeader.TextXAlignment = Enum.TextXAlignment.Center
-eventHeader.Parent = eventFrame
-
-local autoSubmitToggle = Instance.new("TextButton")
-autoSubmitToggle.Name = "AutoSubmitToggle"
-autoSubmitToggle.Size = UDim2.new(1, -32, 0, 36)
-autoSubmitToggle.Position = UDim2.new(0, 16, 0, 64)
-autoSubmitToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-autoSubmitToggle.Text = "AUTO SUBMIT:"
-autoSubmitToggle.Font = Enum.Font.SourceSansBold
-autoSubmitToggle.TextSize = 20
-autoSubmitToggle.TextColor3 = Color3.fromRGB(255,255,255)
-autoSubmitToggle.BorderSizePixel = 0
-autoSubmitToggle.TextXAlignment = Enum.TextXAlignment.Left
-autoSubmitToggle.Parent = eventFrame
-
-local check = Instance.new("TextLabel")
-check.Name = "Checkmark"
-check.Size = UDim2.new(0, 32, 1, 0)
-check.Position = UDim2.new(1, -36, 0, 0)
-check.BackgroundTransparency = 1
-check.Font = Enum.Font.SourceSansBold
-check.TextSize = 24
-check.TextColor3 = Color3.fromRGB(220, 220, 220)
-check.Text = ""
-check.Parent = autoSubmitToggle
-
-local autoSubmitState = false
-local function updateAutoSubmitToggle()
-    autoSubmitToggle.BackgroundColor3 = autoSubmitState and Color3.fromRGB(40, 90, 180) or Color3.fromRGB(60, 90, 130)
-    check.Text = autoSubmitState and "✔" or ""
-end
-updateAutoSubmitToggle()
-autoSubmitToggle.MouseButton1Click:Connect(function()
-    autoSubmitState = not autoSubmitState
-    updateAutoSubmitToggle()
-end)
-
--- SHOP TAB CONTENT
-local shopFrame = tabContent["SHOP"]
-
--- Toggles (create these first so updateShopToggle can reference them)
-local autoBuyEggToggle = Instance.new("TextButton")
-autoBuyEggToggle.Name = "AutoBuyEggToggle"
-autoBuyEggToggle.Size = UDim2.new(1, -32, 0, 36)
-autoBuyEggToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-autoBuyEggToggle.Text = "AUTO BUY EGG"
-autoBuyEggToggle.Font = Enum.Font.SourceSansBold
-autoBuyEggToggle.TextSize = 20
-autoBuyEggToggle.TextColor3 = Color3.fromRGB(255,255,255)
-autoBuyEggToggle.BorderSizePixel = 0
-autoBuyEggToggle.TextXAlignment = Enum.TextXAlignment.Left
-autoBuyEggToggle.Parent = shopFrame
-
-local eggCheck = Instance.new("TextLabel")
-eggCheck.Name = "Checkmark"
-eggCheck.Size = UDim2.new(0, 32, 1, 0)
-eggCheck.Position = UDim2.new(1, -36, 0, 0)
-eggCheck.BackgroundTransparency = 1
-eggCheck.Font = Enum.Font.SourceSansBold
-eggCheck.TextSize = 24
-eggCheck.TextColor3 = Color3.fromRGB(220, 220, 220)
-eggCheck.Text = ""
-eggCheck.Parent = autoBuyEggToggle
-
-local autoBuyEggState = false
-local autoBuyEggLoopRunning = false
-local function updateAutoBuyEggToggle()
-    if autoBuyEggState then
-        autoBuyEggToggle.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-        eggCheck.Text = "✅"
-    else
-        autoBuyEggToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-        eggCheck.Text = ""
+local function bindAllRemotes(list)
+    local events = ReplicatedStorage:FindFirstChild("GameEvents")
+    if events then
+        for _, name in ipairs(list) do
+            local remote = events:FindFirstChild(name)
+            if remote then
+                Remotes[name] = remote
+            end
+        end
+    end
+    -- Workspace InputGateway remotes (example, expand as needed)
+    for _, obj in ipairs(Workspace:GetDescendants()) do
+        if obj:IsA("RemoteEvent") and obj.Name == "Activation" then
+            Remotes[obj:GetFullName()] = obj
+        end
     end
 end
-updateAutoBuyEggToggle()
 
--- Only one connection for auto-buy egg toggle, fully automatic
-autoBuyEggToggle.MouseButton1Click:Connect(function()
-    autoBuyEggState = not autoBuyEggState
-    updateAutoBuyEggToggle()
-    if autoBuyEggState and not autoBuyEggLoopRunning then
-        autoBuyEggLoopRunning = true
-        task.spawn(function()
-            while autoBuyEggState do
-                for _, egg in ipairs(selectedEggs) do
-                    if isEggInStock(egg) then
-                        if buyEggRemote then
-                            buyEggRemote:FireServer(egg)
-                        end
-                    end
-                end
-                task.wait(0.1)
+local function FireRemote(name, ...)
+    local remote = Remotes[name]
+    if remote then
+        local ok, err = pcall(function()
+            if remote:IsA("RemoteEvent") then
+                remote:FireServer(...)
+            elseif remote:IsA("RemoteFunction") then
+                remote:InvokeServer(...)
             end
-            autoBuyEggLoopRunning = false
+        end)
+        if not ok then warn("[Remote Error]", name, err) end
+    else
+        warn("[Remote Not Found]", name)
+    end
+end
+
+--// Utility: Run/Stop Loops
+local activeLoops = {}
+local function runLoop(flagValue, callback)
+    local loopId = {}
+    activeLoops[loopId] = true
+    local function loop()
+        while flagValue.Value and activeLoops[loopId] do
+            callback()
+            RunService.Heartbeat:Wait()
+        end
+    end
+    task.spawn(loop)
+    return function()
+        activeLoops[loopId] = nil
+    end
+end
+
+--// Utility: Anti-AFK
+local antiAfkConn
+local function antiAfk(flagValue)
+    if antiAfkConn then antiAfkConn:Disconnect() end
+    if flagValue.Value then
+        antiAfkConn = RunService.Heartbeat:Connect(function(dt)
+            if tick() % 60 < dt then
+                VirtualInputManager:SendMouseButtonEvent(0,0,2,true,game,0)
+                VirtualInputManager:SendMouseButtonEvent(0,0,2,false,game,0)
+            end
         end)
     end
-end)
+end
 
-local autoBuySeedToggle = Instance.new("TextButton")
-autoBuySeedToggle.Name = "AutoBuySeedToggle"
-autoBuySeedToggle.Size = UDim2.new(1, -32, 0, 36)
-autoBuySeedToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-autoBuySeedToggle.Text = "AUTO BUY SEED"
-autoBuySeedToggle.Font = Enum.Font.SourceSansBold
-autoBuySeedToggle.TextSize = 20
-autoBuySeedToggle.TextColor3 = Color3.fromRGB(255,255,255)
-autoBuySeedToggle.BorderSizePixel = 0
-autoBuySeedToggle.TextXAlignment = Enum.TextXAlignment.Left
-autoBuySeedToggle.Parent = shopFrame
+--// UI Creation
+local gui = Instance.new("ScreenGui")
+gui.Name = "AutoScriptUI"
+gui.Parent = playerGui
 
-local seedCheck = Instance.new("TextLabel")
-seedCheck.Name = "Checkmark"
-seedCheck.Size = UDim2.new(0, 32, 1, 0)
-seedCheck.Position = UDim2.new(1, -36, 0, 0)
-seedCheck.BackgroundTransparency = 1
-seedCheck.Font = Enum.Font.SourceSansBold
-seedCheck.TextSize = 24
-seedCheck.TextColor3 = Color3.fromRGB(220, 220, 220)
-seedCheck.Text = ""
-seedCheck.Parent = autoBuySeedToggle
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0, 350, 0, 450)
+mainFrame.Position = UDim2.new(0.5, -175, 0.5, -225)
+mainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = gui
 
-local autoBuySeedState = false
-local autoBuySeedLoopRunning = false
-local function updateAutoBuySeedToggle()
-    if autoBuySeedState then
-        autoBuySeedToggle.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-        seedCheck.Text = "✅"
-    else
-        autoBuySeedToggle.BackgroundColor3 = Color3.fromRGB(60, 90, 130)
-        seedCheck.Text = ""
+local leftMenu = Instance.new("Frame")
+leftMenu.Name = "LeftMenu"
+leftMenu.Size = UDim2.new(0, 60, 1, 0)
+leftMenu.Position = UDim2.new(0, 0, 0, 0)
+leftMenu.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+leftMenu.BorderSizePixel = 0
+leftMenu.Parent = mainFrame
+
+local rightPanel = Instance.new("Frame")
+rightPanel.Name = "RightPanel"
+rightPanel.Size = UDim2.new(0, 290, 1, 0)
+rightPanel.Position = UDim2.new(0, 60, 0, 0)
+rightPanel.BackgroundColor3 = Color3.fromRGB(50, 50, 60)
+rightPanel.BorderSizePixel = 0
+rightPanel.Parent = mainFrame
+
+--// Panel Switch Logic
+local panels = {}
+local function switchPanel(panelName)
+    for name, panel in pairs(panels) do
+        panel.Visible = (name == panelName)
     end
 end
-updateAutoBuySeedToggle()
 
--- Only one connection for auto-buy seed toggle, fully automatic
-autoBuySeedToggle.MouseButton1Click:Connect(function()
-    autoBuySeedState = not autoBuySeedState
-    updateAutoBuySeedToggle()
-    if autoBuySeedState and not autoBuySeedLoopRunning then
-        autoBuySeedLoopRunning = true
-        task.spawn(function()
-            while autoBuySeedState do
-                for _, seed in ipairs(selectedSeeds) do
-                    if isSeedInStock(seed) then
-                        if buySeedRemote then
-                            buySeedRemote:FireServer(seed)
-                        end
-                    end
-                end
-                task.wait(0.1)
-            end
-            autoBuySeedLoopRunning = false
-        end)
+--// Button Factory
+local function createMenuButton(text, order, callback)
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(1, 0, 0, 50)
+    btn.Position = UDim2.new(0, 0, 0, (order-1)*50)
+    btn.BackgroundColor3 = Color3.fromRGB(60, 60, 80)
+    btn.Text = text
+    btn.Font = Enum.Font.SourceSansBold
+    btn.TextSize = 18
+    btn.TextColor3 = Color3.fromRGB(255,255,255)
+    btn.Parent = leftMenu
+    btn.MouseButton1Click:Connect(callback)
+    return btn
+end
+
+--// Toggle Factory
+local function createToggle(name, parent, callback)
+    local container = Instance.new("Frame")
+    container.Size = UDim2.new(1, -20, 0, 36)
+    container.BackgroundTransparency = 1
+    container.Parent = parent
+
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(0.7, 0, 1, 0)
+    label.Position = UDim2.new(0, 0, 0, 0)
+    label.BackgroundTransparency = 1
+    label.Text = name
+    label.Font = Enum.Font.SourceSans
+    label.TextSize = 16
+    label.TextColor3 = Color3.fromRGB(220,220,220)
+    label.TextXAlignment = Enum.TextXAlignment.Left
+    label.Parent = container
+
+    local toggle = Instance.new("TextButton")
+    toggle.Size = UDim2.new(0.3, -10, 0.7, 0)
+    toggle.Position = UDim2.new(0.7, 10, 0.15, 0)
+    toggle.BackgroundColor3 = Color3.fromRGB(80, 80, 120)
+    toggle.Text = "OFF"
+    toggle.Font = Enum.Font.SourceSansBold
+    toggle.TextSize = 16
+    toggle.TextColor3 = Color3.fromRGB(255,255,255)
+    toggle.Parent = container
+
+    local flag = Instance.new("BoolValue")
+    flag.Value = false
+
+    local function update()
+        toggle.Text = flag.Value and "ON" or "OFF"
+        toggle.BackgroundColor3 = flag.Value and Color3.fromRGB(60, 180, 100) or Color3.fromRGB(80, 80, 120)
     end
-end)
+    update()
 
--- Egg Dropdown Button
-local eggDropdownBtn = Instance.new("TextButton")
-eggDropdownBtn.Name = "EggDropdownBtn"
-eggDropdownBtn.Size = UDim2.new(1, -40, 0, 44) -- Larger
-eggDropdownBtn.Position = UDim2.new(0, 20, 0, 20)
-eggDropdownBtn.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-eggDropdownBtn.Text = "BUY EGG:"
-eggDropdownBtn.Font = Enum.Font.SourceSansBold
-eggDropdownBtn.TextSize = 22
-eggDropdownBtn.TextColor3 = Color3.fromRGB(255,255,255)
-eggDropdownBtn.BorderSizePixel = 0
-eggDropdownBtn.TextXAlignment = Enum.TextXAlignment.Center
-eggDropdownBtn.Parent = shopFrame
-eggDropdownBtn.ZIndex = 2
+    toggle.MouseButton1Click:Connect(function()
+        flag.Value = not flag.Value
+        update()
+        if callback then callback(flag) end
+    end)
 
--- Egg Dropdown ScrollingFrame
-local eggDropdownList = Instance.new("ScrollingFrame")
-eggDropdownList.Name = "EggDropdownList"
-eggDropdownList.Size = UDim2.new(1, -40, 0, 0)
-eggDropdownList.Position = UDim2.new(0, 20, 0, 64)
-eggDropdownList.BackgroundColor3 = Color3.fromRGB(60, 120, 180)
-eggDropdownList.BorderSizePixel = 0
-eggDropdownList.Visible = false
-eggDropdownList.Parent = shopFrame
-eggDropdownList.ZIndex = 3
-eggDropdownList.ClipsDescendants = true
-eggDropdownList.CanvasSize = UDim2.new(0, 0, 0, 0)
-eggDropdownList.ScrollBarThickness = 10 -- Thicker scrollbar
+    return flag
+end
 
--- Full Egg List (Name, Price, Details)
-local eggOptions = {
-    "Common Egg",
-    "Uncommon Egg",
-    "Rare Egg",
-    "Legendary Egg",
-    "Mythical Egg",
-    "Bug Egg",
-    "Exotic Bug Egg",
-    "Night Egg",
-    "Premium Night Egg",
-    "Bee Egg",
-    "Anti Bee Egg",
-    "Premium Anti Bee Egg",
-    "Common Summer Egg",
-    "Rare Summer Egg",
-    "Paradise Egg",
-    "Oasis Egg",
-    "Premium Oasis Egg"
+--// Panel Definitions
+local function makePanel(name)
+    local panel = Instance.new("Frame")
+    panel.Name = name .. "Panel"
+    panel.Size = UDim2.new(1, 0, 1, 0)
+    panel.BackgroundTransparency = 1
+    panel.Visible = false
+    panel.Parent = rightPanel
+
+    local header = Instance.new("TextLabel")
+    header.Size = UDim2.new(1, 0, 0, 40)
+    header.Position = UDim2.new(0, 0, 0, 0)
+    header.BackgroundTransparency = 1
+    header.Text = name
+    header.Font = Enum.Font.SourceSansBold
+    header.TextSize = 24
+    header.TextColor3 = Color3.fromRGB(255,255,255)
+    header.Parent = panel
+
+    return panel
+end
+
+--// Event Panel
+local eventPanel = makePanel("Events")
+panels["Event"] = eventPanel
+local eventToggles = {
+    {"Auto Summer Harvest Submit", function(flag) runLoop(flag, function() FireRemote("SummerHarvestSubmitRemoteEvent") end) end},
+    {"Auto Like Garden", function(flag) runLoop(flag, function() FireRemote("LikeGarden") end) end},
+    {"Auto Sun Strike", function(flag) runLoop(flag, function() FireRemote("SunStrike") end) end},
+    {"Auto Meteor Shower", function(flag) runLoop(flag, function() FireRemote("MeteorStrike") end) end},
+    {"Auto Night Quest", function(flag) runLoop(flag, function() FireRemote("NightQuestRemoteEvent") end) end},
+    {"Auto Prompt RSVP", function(flag) runLoop(flag, function() FireRemote("PromptRSVP") end) end},
+    {"Auto Firework Launch", function(flag) runLoop(flag, function() FireRemote("FireworkLaunch") end) end},
 }
-local eggDetails = {
-    ["Common Egg"] = "50,000 | Golden Lab, Dog, Bunny (33.33% each)",
-    ["Uncommon Egg"] = "150,000 | Black Bunny, Chicken, Cat, Deer (25% each)",
-    ["Rare Egg"] = "600,000 | Orange Tabby, Spotted Deer, Pig, Rooster, Monkey",
-    ["Legendary Egg"] = "3,000,000 | Cow, Silver Monkey, Sea Otter, Turtle, Polar Bear",
-    ["Mythical Egg"] = "8,000,000 | Grey Mouse, Brown Mouse, Squirrel, Red Giant Ant, Red Fox",
-    ["Bug Egg"] = "50,000,000 | Snail, Giant Ant, Caterpillar, Praying Mantis, Dragonfly",
-    ["Exotic Bug Egg"] = "Limited Time Shop",
-    ["Night Egg"] = "25M/50M | Hedgehog, Mole, Frog, Echo Frog, Night Owl, Raccoon",
-    ["Premium Night Egg"] = "199 | Hedgehog, Mole, Frog, Echo Frog, Night Owl, Raccoon",
-    ["Bee Egg"] = "18 | Bee, Honey Bee, Bear Bee, Petal Bee, Queen Bee",
-    ["Anti Bee Egg"] = "Crafting | Wasp, Tarantula Hawk, Moth, Butterfly, Disco Bee",
-    ["Premium Anti Bee Egg"] = "199 | Limited Time Shop",
-    ["Common Summer Egg"] = "1,000,000 | Starfish, Seagull, Crab",
-    ["Rare Summer Egg"] = "25,000,000 | Flamingo, Toucan, Sea Turtle, Orangutan, Seal",
-    ["Paradise Egg"] = "50,000,000 | Ostrich, Peacock, Capybara, Scarlet Macaw, Mimic Octopus",
-    ["Oasis Egg"] = "10 | Meerkat, Sand Snake, Axolotl, Hyacinth Macaw, Fennec Fox",
-    ["Premium Oasis Egg"] = "199 | Limited Time Shop"
+for i, v in ipairs(eventToggles) do
+    createToggle(v[1], eventPanel, v[2]).Parent.Position = UDim2.new(0, 10, 0, 40 + (i-1)*38)
+end
+
+--// Shop Panel
+local shopPanel = makePanel("Shop")
+panels["Shop"] = shopPanel
+local shopToggles = {
+    {"Auto Buy Egg", function(flag) runLoop(flag, function() FireRemote("BuyPetEgg") end) end},
+    {"Auto Buy Seed", function(flag) runLoop(flag, function() FireRemote("BuySeedStock") end) end},
+    {"Auto Buy Traveling Merchant Stock", function(flag) runLoop(flag, function() FireRemote("BuyTravelingMerchantShopStock") end) end},
+    {"Auto Buy Pet Egg", function(flag) runLoop(flag, function() FireRemote("BuyPetEgg") end) end},
+    {"Auto Buy Night Event Stock", function(flag) runLoop(flag, function() FireRemote("BuyNightEventShopStock") end) end},
+    {"Auto Buy Easter Stock", function(flag) runLoop(flag, function() FireRemote("BuyEasterStock") end) end},
+    {"Auto Buy Gear Stock", function(flag) runLoop(flag, function() FireRemote("BuyGearStock") end) end},
+    {"Auto Buy Cosmetic Crates", function(flag) runLoop(flag, function() FireRemote("BuyCosmeticCrate") end) end},
+    {"Auto Developer Purchase", function(flag) runLoop(flag, function() FireRemote("DeveloperPurchase") end) end},
 }
-local selectedEggs = {}
-local function updateEggDropdownText()
-    if #selectedEggs == 0 then
-        eggDropdownBtn.Text = "BUY EGG:"
-    else
-        eggDropdownBtn.Text = "BUY EGG: " .. table.concat(selectedEggs, ", ")
-    end
+for i, v in ipairs(shopToggles) do
+    createToggle(v[1], shopPanel, v[2]).Parent.Position = UDim2.new(0, 10, 0, 40 + (i-1)*38)
 end
-for i, name in ipairs(eggOptions) do
-    local opt = Instance.new("TextButton")
-    opt.Size = UDim2.new(1, 0, 0, 38)
-    opt.Position = UDim2.new(0, 0, 0, (i-1)*38)
-    opt.BackgroundColor3 = Color3.fromRGB(100, 170, 220)
-    opt.Text = name
-    opt.Font = Enum.Font.SourceSans
-    opt.TextSize = 20
-    opt.TextColor3 = Color3.fromRGB(255,255,255)
-    opt.BorderSizePixel = 0
-    opt.Parent = eggDropdownList
-    opt.ZIndex = 4
-    -- Tooltip for details
-    opt.MouseEnter:Connect(function()
-        opt.Text = name .. "\n" .. (eggDetails[name] or "")
-        opt.TextWrapped = true
-    end)
-    opt.MouseLeave:Connect(function()
-        opt.Text = name
-        opt.TextWrapped = false
-    end)
-    opt.MouseButton1Click:Connect(function()
-        local found = false
-        for j, v in ipairs(selectedEggs) do
-            if v == name then table.remove(selectedEggs, j) found = true break end
-        end
-        if not found then table.insert(selectedEggs, name) end
-        updateEggDropdownText()
-        opt.BackgroundColor3 = found and Color3.fromRGB(100, 170, 220) or Color3.fromRGB(60, 200, 120)
-    end)
-end
-updateEggDropdownText()
-eggDropdownList.CanvasSize = UDim2.new(0, 0, 0, #eggOptions * 38)
 
--- Seed Dropdown Button
-local seedDropdownBtn = Instance.new("TextButton")
-seedDropdownBtn.Name = "SeedDropdownBtn"
-seedDropdownBtn.Size = UDim2.new(1, -40, 0, 44)
-seedDropdownBtn.Position = UDim2.new(0, 20, 0, 74 + (#eggOptions > 0 and (#eggOptions * 38) or 0))
-seedDropdownBtn.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-seedDropdownBtn.Text = "BUY SEEDS:"
-seedDropdownBtn.Font = Enum.Font.SourceSansBold
-seedDropdownBtn.TextSize = 22
-seedDropdownBtn.TextColor3 = Color3.fromRGB(255,255,255)
-seedDropdownBtn.BorderSizePixel = 0
-seedDropdownBtn.TextXAlignment = Enum.TextXAlignment.Center
-seedDropdownBtn.Parent = shopFrame
-seedDropdownBtn.ZIndex = 2
-
--- Seed Dropdown ScrollingFrame
-local seedDropdownList = Instance.new("ScrollingFrame")
-seedDropdownList.Name = "SeedDropdownList"
-seedDropdownList.Size = UDim2.new(1, -40, 0, 0)
-seedDropdownList.Position = UDim2.new(0, 20, 0, 118 + (#eggOptions > 0 and (#eggOptions * 38) or 0))
-seedDropdownList.BackgroundColor3 = Color3.fromRGB(60, 120, 180)
-seedDropdownList.BorderSizePixel = 0
-seedDropdownList.Visible = false
-seedDropdownList.Parent = shopFrame
-seedDropdownList.ZIndex = 3
-seedDropdownList.ClipsDescendants = true
-seedDropdownList.CanvasSize = UDim2.new(0, 0, 0, 0)
-seedDropdownList.ScrollBarThickness = 10
-
--- Full Seed List (Name, Price, etc)
-local seedOptions = {
-    "Carrot",
-    "Strawberry",
-    "Blueberry",
-    "Tomato",
-    "Cauliflower",
-    "Watermelon",
-    "Rafflesia",
-    "Green Apple",
-    "Avocado",
-    "Banana",
-    "Pineapple",
-    "Kiwi",
-    "Bell Pepper",
-    "Prickly Pear",
-    "Loquat",
-    "Feijoa",
-    "Pitcher Plant",
-    "Sugar Apple"
+--// Farm Panel
+local farmPanel = makePanel("Farm")
+panels["Farm"] = farmPanel
+local farmToggles = {
+    {"Auto Plant", function(flag) runLoop(flag, function() FireRemote("Plant_RE") end) end},
+    {"Auto Harvest", function(flag) runLoop(flag, function() FireRemote("HarvestRemote") end) end},
+    {"Auto Sell", function(flag) runLoop(flag, function() FireRemote("Sell_Inventory") end) end},
+    {"Auto Sprinkler Service", function(flag) runLoop(flag, function() FireRemote("SprinklerService") end) end},
+    {"Auto Water", function(flag) runLoop(flag, function() FireRemote("Water_RE") end) end},
+    {"Auto Trowel", function(flag) runLoop(flag, function() FireRemote("TrowelRemote") end) end},
+    {"Auto BeeBolt Attacks", function(flag) runLoop(flag, function() FireRemote("BeeBolt") end) end},
+    {"Auto FireDrop Effects", function(flag) runLoop(flag, function() FireRemote("FireDrop") end) end},
 }
-local seedDetails = {
-    ["Carrot"] = "10 | Common | 5-25 | ✗/✓",
-    ["Strawberry"] = "50 | Common | 1-6 | ✓/✓",
-    ["Blueberry"] = "400 | Uncommon | 1-5 | ✓/✓",
-    ["Tomato"] = "800 | Rare | 1-3 | ✓/✓",
-    ["Cauliflower"] = "1,300 | Rare | 1-4 | ✓/✓",
-    ["Watermelon"] = "2,500 | Rare | 1-7 | ✗/✓",
-    ["Rafflesia"] = "3,200 | Legendary | 1-? | ✗/✓",
-    ["Green Apple"] = "3,500 | Legendary | 1 | ✓/✓",
-    ["Avocado"] = "5,000 | Legendary | 1 | ✓/✓",
-    ["Banana"] = "7,000 | Legendary | 1 | ✓/✓",
-    ["Pineapple"] = "7,500 | Mythical | 1 | ✓/✓",
-    ["Kiwi"] = "10,000 | Mythical | 1 | ✓/✓",
-    ["Bell Pepper"] = "55,000 | Mythical | 1 | ✓/✓",
-    ["Prickly Pear"] = "555,000 | Mythical | 1 | ✓/✓",
-    ["Loquat"] = "900,000 | Divine | 1 | ✓/✓",
-    ["Feijoa"] = "2,750,000 | Divine | 1 | ✓/✓",
-    ["Pitcher Plant"] = "7,500,000 | Divine | 1 | ✓/✓",
-    ["Sugar Apple"] = "25,000,000 | Prismatic | 1"
+for i, v in ipairs(farmToggles) do
+    createToggle(v[1], farmPanel, v[2]).Parent.Position = UDim2.new(0, 10, 0, 40 + (i-1)*38)
+end
+
+--// Utility Panel
+local utilityPanel = makePanel("Utility")
+panels["Utility"] = utilityPanel
+local utilityToggles = {
+    {"Anti-AFK", antiAfk},
+    {"Auto Redeem Codes", function(flag) runLoop(flag, function() FireRemote("ClaimableCodeService", "CODE") end) end},
+    {"Auto Accept/Prompt Friend Requests", function(flag) runLoop(flag, function() FireRemote("Prompt_Friend", player.UserId) end) end},
+    {"Auto Gift Pets", function(flag) runLoop(flag, function() FireRemote("GiftPet", 1, player.UserId) end) end},
+    {"Auto Claim Starter Pack & Daily Reward", function(flag) runLoop(flag, function() FireRemote("PromptStarterPack") end) end},
+    {"Auto Sort Backpack", function(flag) runLoop(flag, function() FireRemote("SortBackpackEvent") end) end},
+    {"Auto Crafting", function(flag) runLoop(flag, function() FireRemote("CraftingGlobalObjectService", 1) end) end},
+    {"Auto Experience Notifications", function(flag) runLoop(flag, function() FireRemote("ExperienceNotificationServicePrompterController") end) end},
+    {"Auto Highlight Remote", function(flag) runLoop(flag, function() FireRemote("HighlightRemote") end) end},
+    {"Auto Display Chat", function(flag) runLoop(flag, function() FireRemote("DisplayChatMessage", "Auto Chat!") end) end},
+    {"Auto Play Sound", function(flag) runLoop(flag, function() FireRemote("PlaySound") end) end},
 }
-local selectedSeeds = {}
-local function updateSeedDropdownText()
-    if #selectedSeeds == 0 then
-        seedDropdownBtn.Text = "BUY SEEDS:"
-    else
-        seedDropdownBtn.Text = "BUY SEEDS: " .. table.concat(selectedSeeds, ", ")
-    end
-end
-for i, name in ipairs(seedOptions) do
-    local opt = Instance.new("TextButton")
-    opt.Size = UDim2.new(1, 0, 0, 38)
-    opt.Position = UDim2.new(0, 0, 0, (i-1)*38)
-    opt.BackgroundColor3 = Color3.fromRGB(100, 170, 220)
-    opt.Text = name
-    opt.Font = Enum.Font.SourceSans
-    opt.TextSize = 20
-    opt.TextColor3 = Color3.fromRGB(255,255,255)
-    opt.BorderSizePixel = 0
-    opt.Parent = seedDropdownList
-    opt.ZIndex = 4
-    -- Tooltip for details
-    opt.MouseEnter:Connect(function()
-        opt.Text = name .. "\n" .. (seedDetails[name] or "")
-        opt.TextWrapped = true
-    end)
-    opt.MouseLeave:Connect(function()
-        opt.Text = name
-        opt.TextWrapped = false
-    end)
-    opt.MouseButton1Click:Connect(function()
-        local found = false
-        for j, v in ipairs(selectedSeeds) do
-            if v == name then table.remove(selectedSeeds, j) found = true break end
-        end
-        if not found then table.insert(selectedSeeds, name) end
-        updateSeedDropdownText()
-        opt.BackgroundColor3 = found and Color3.fromRGB(100, 170, 220) or Color3.fromRGB(60, 200, 120)
-    end)
-end
-updateSeedDropdownText()
-seedDropdownList.CanvasSize = UDim2.new(0, 0, 0, #seedOptions * 38)
-
--- Helper to update toggle positions based on dropdowns
-function updateShopTogglePositions()
-    local y = 20
-    local contentBottom = shopFrame.AbsolutePosition.Y + shopFrame.AbsoluteSize.Y
-    -- Egg Dropdown Button
-    eggDropdownBtn.Position = UDim2.new(0, 20, 0, y)
-    y = y + 44
-    -- Egg Dropdown List
-    if eggDropdownList.Visible then
-        local dropdownTop = shopFrame.AbsolutePosition.Y + y
-        local maxHeight = contentBottom - dropdownTop - 20
-        local needed = #eggOptions * 38
-        local showHeight = math.max(0, math.min(needed, maxHeight))
-        eggDropdownList.Position = UDim2.new(0, 20, 0, y)
-        eggDropdownList.Size = UDim2.new(1, -40, 0, showHeight)
-        eggDropdownList.CanvasSize = UDim2.new(0, 0, 0, needed)
-        y = y + showHeight
-    else
-        eggDropdownList.Position = UDim2.new(0, 20, 0, y)
-        eggDropdownList.Size = UDim2.new(1, -40, 0, 0)
-    end
-    -- Seed Dropdown Button
-    seedDropdownBtn.Position = UDim2.new(0, 20, 0, y)
-    y = y + 44
-    -- Seed Dropdown List
-    if seedDropdownList.Visible then
-        local dropdownTop = shopFrame.AbsolutePosition.Y + y
-        local maxHeight = contentBottom - dropdownTop - 20
-        local needed = #seedOptions * 38
-        local showHeight = math.max(0, math.min(needed, maxHeight))
-        seedDropdownList.Position = UDim2.new(0, 20, 0, y)
-        seedDropdownList.Size = UDim2.new(1, -40, 0, showHeight)
-        seedDropdownList.CanvasSize = UDim2.new(0, 0, 0, needed)
-        y = y + showHeight
-    else
-        seedDropdownList.Position = UDim2.new(0, 20, 0, y)
-        seedDropdownList.Size = UDim2.new(1, -40, 0, 0)
-    end
-    -- Toggles
-    autoBuyEggToggle.Position = UDim2.new(0, 20, 0, y + 18)
-    autoBuySeedToggle.Position = UDim2.new(0, 20, 0, y + 18 + 54)
+for i, v in ipairs(utilityToggles) do
+    createToggle(v[1], utilityPanel, v[2]).Parent.Position = UDim2.new(0, 10, 0, 40 + (i-1)*38)
 end
 
-eggDropdownBtn.MouseButton1Click:Connect(function()
-    eggDropdownList.Visible = not eggDropdownList.Visible
-    updateShopTogglePositions()
+--// Menu Buttons
+createMenuButton("Event", 1, function() switchPanel("Event") end)
+createMenuButton("Shop", 2, function() switchPanel("Shop") end)
+createMenuButton("Farm", 3, function() switchPanel("Farm") end)
+createMenuButton("Utility", 4, function() switchPanel("Utility") end)
+
+--// Initial State
+switchPanel("Event")
+bindAllRemotes(remoteNames)
+
+--// Cleanup
+local function cleanup()
+    for k in pairs(activeLoops) do activeLoops[k] = nil end
+    if antiAfkConn then antiAfkConn:Disconnect() end
+    if gui then gui:Destroy() end
+    table.clear(Remotes)
+end
+
+gui.AncestryChanged:Connect(function(_, parent)
+    if not parent then cleanup() end
 end)
 
-seedDropdownBtn.MouseButton1Click:Connect(function()
-    seedDropdownList.Visible = not seedDropdownList.Visible
-    updateShopTogglePositions()
-end)
-
--- Hide dropdowns if clicking elsewhere
-UserInputService.InputBegan:Connect(function(input, processed)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        local changed = false
-        if eggDropdownList.Visible and not eggDropdownBtn:IsAncestorOf(input.Target) then
-            eggDropdownList.Visible = false
-            changed = true
-        end
-        if seedDropdownList.Visible and not seedDropdownBtn:IsAncestorOf(input.Target) then
-            seedDropdownList.Visible = false
-            changed = true
-        end
-        if changed then updateShopTogglePositions() end
-    end
-end)
-
--- Automation Remotes
-local buyEggRemote = ReplicatedStorage:FindFirstChild("GameEvents"):FindFirstChild("BuyPetEgg")
-local buySeedRemote = ReplicatedStorage:FindFirstChild("GameEvents"):FindFirstChild("BuySeedStock")
-
--- Helper: Check if an egg/seed is in stock (stub, should be replaced with real stock check if available)
-local function isEggInStock(eggName)
-    -- TODO: Replace with real stock check if possible
-    return true -- Assume always in stock for now
-end
-local function isSeedInStock(seedName)
-    -- TODO: Replace with real stock check if possible
-    return true -- Assume always in stock for now
-end
-
--- Auto-buy logic
-local autoBuyEggLoopRunning = false
-local autoBuySeedLoopRunning = false
-
--- Start auto-buy egg loop on script load
-if not autoBuyEggLoopRunning then
-    autoBuyEggLoopRunning = true
-    task.spawn(function()
-        while true do
-            if autoBuyEggState then
-                for _, egg in ipairs(selectedEggs) do
-                    if isEggInStock(egg) then
-                        if buyEggRemote then
-                            buyEggRemote:FireServer(egg)
-                        end
-                    end
-                end
-            end
-            task.wait(0.1)
-        end
-    end)
-end
-
--- Start auto-buy seed loop on script load
-if not autoBuySeedLoopRunning then
-    autoBuySeedLoopRunning = true
-    task.spawn(function()
-        while true do
-            if autoBuySeedState then
-                for _, seed in ipairs(selectedSeeds) do
-                    if isSeedInStock(seed) then
-                        if buySeedRemote then
-                            buySeedRemote:FireServer(seed)
-                        end
-                    end
-                end
-            end
-            task.wait(0.1)
-        end
-    end)
-end
-
--- Tab Switching Logic
-local function selectTab(tabName)
-    for name, btn in pairs(tabButtons) do
-        btn.BackgroundColor3 = name == tabName and Color3.fromRGB(220, 160, 80) or Color3.fromRGB(80, 90, 110)
-    end
-    for name, frame in pairs(tabContent) do
-        frame.Visible = (name == tabName)
-    end
-end
-for name, btn in pairs(tabButtons) do
-    btn.MouseButton1Click:Connect(function()
-        selectTab(name)
-    end)
-end
-
--- Hide/Show Logic
-local showUIButton = Instance.new("TextButton")
-showUIButton.Name = "ShowUIButton"
-showUIButton.Size = UDim2.new(0, 140, 0, 36)
-showUIButton.Position = UDim2.new(0, 20, 0, 20)
-showUIButton.BackgroundColor3 = Color3.fromRGB(80, 90, 110)
-showUIButton.Text = "Show GAG UI"
-showUIButton.Font = Enum.Font.SourceSansBold
-showUIButton.TextSize = 20
-showUIButton.TextColor3 = Color3.fromRGB(255,255,255)
-showUIButton.Visible = false
-showUIButton.Parent = screenGui
-
-local function hideUI()
-    sidebar.Visible = false
-    showUIButton.Visible = true
-end
-local function showUI()
-    sidebar.Visible = true
-    showUIButton.Visible = false
-end
-closeBtn.MouseButton1Click:Connect(hideUI)
-showUIButton.MouseButton1Click:Connect(showUI)
-minimizeBtn.MouseButton1Click:Connect(function()
-    sidebar.Visible = not sidebar.Visible
-    showUIButton.Visible = not sidebar.Visible
-end)
-UserInputService.InputBegan:Connect(function(input, processed)
-    if not processed and input.KeyCode == Enum.KeyCode.RightShift then
-        if sidebar.Visible then
-            hideUI()
-        else
-            showUI()
-        end
-    end
-end)
+--// End of Script
