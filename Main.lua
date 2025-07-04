@@ -180,7 +180,7 @@ topBarTitle.Name = "TopBarTitle"
 topBarTitle.Size = UDim2.new(1, -80, 1, 0)
 topBarTitle.Position = UDim2.new(0, 12, 0, 0)
 topBarTitle.BackgroundTransparency = 1
-topBarTitle.Text = "GAG SCRIPT BY:BREAD"
+topBarTitle.Text = "GAG SCRIPT BY:BREAD BILI KANA LAPTOP LUNA"
 topBarTitle.Font = Enum.Font.SourceSansBold
 topBarTitle.TextSize = 24
 topBarTitle.TextColor3 = Color3.fromRGB(40, 40, 40)
@@ -665,13 +665,13 @@ local gearOptions = {
 }
 local selectedGears = {}
 
--- GEAR DROPDOWN BUTTON (renamed to 'GEAR')
+-- GEAR DROPDOWN BUTTON
 local gearDropdownBtn = Instance.new("TextButton")
 gearDropdownBtn.Name = "GearDropdownBtn"
 gearDropdownBtn.Size = UDim2.new(1, -40, 0, 44)
 gearDropdownBtn.Position = UDim2.new(0, 20, 0, 74 + (#eggOptions > 0 and (#eggOptions * 38) or 0) + 54 + (#seedOptions > 0 and (#seedOptions * 38) or 0))
 gearDropdownBtn.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-gearDropdownBtn.Text = "GEAR:"
+gearDropdownBtn.Text = "BUY GEARS:"
 gearDropdownBtn.Font = Enum.Font.SourceSansBold
 gearDropdownBtn.TextSize = 22
 gearDropdownBtn.TextColor3 = Color3.fromRGB(255,255,255)
@@ -696,11 +696,11 @@ gearDropdownList.ScrollBarThickness = 10
 
 local function updateGearDropdownText()
     if #selectedGears == 0 then
-        gearDropdownBtn.Text = "GEAR:"
+        gearDropdownBtn.Text = "BUY GEARS:"
     else
         local names = {}
         for _, g in ipairs(selectedGears) do table.insert(names, g) end
-        gearDropdownBtn.Text = "GEAR: " .. table.concat(names, ", ")
+        gearDropdownBtn.Text = "BUY GEARS: " .. table.concat(names, ", ")
     end
 end
 for i, gear in ipairs(gearOptions) do
