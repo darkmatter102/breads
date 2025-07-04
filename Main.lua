@@ -210,7 +210,7 @@ closeBtn.TextColor3 = Color3.fromRGB(255,255,255)
 closeBtn.Parent = topBar
 
 -- Sidebar Tabs
-local tabNames = {"EVENT", "SHOP", "FARM"}
+local tabNames = {"EVENT", "SHOP", "FARM", "GEAR"} -- Added GEAR tab
 local tabButtons = {}
 for i, name in ipairs(tabNames) do
     local tabBtn = Instance.new("TextButton")
@@ -665,13 +665,13 @@ local gearOptions = {
 }
 local selectedGears = {}
 
--- GEAR DROPDOWN BUTTON
+-- GEAR DROPDOWN BUTTON (under seed dropdown)
 local gearDropdownBtn = Instance.new("TextButton")
 gearDropdownBtn.Name = "GearDropdownBtn"
 gearDropdownBtn.Size = UDim2.new(1, -40, 0, 44)
-gearDropdownBtn.Position = UDim2.new(0, 20, 0, 74 + (#eggOptions > 0 and (#eggOptions * 38) or 0) + 54 + (#seedOptions > 0 and (#seedOptions * 38) or 0))
+gearDropdownBtn.Position = UDim2.new(0, 20, 0, 118 + (#seedOptions > 0 and (#seedOptions * 38) or 0))
 gearDropdownBtn.BackgroundColor3 = Color3.fromRGB(40, 90, 180)
-gearDropdownBtn.Text = "BUY GEARS:"
+gearDropdownBtn.Text = "GEAR:"
 gearDropdownBtn.Font = Enum.Font.SourceSansBold
 gearDropdownBtn.TextSize = 22
 gearDropdownBtn.TextColor3 = Color3.fromRGB(255,255,255)
@@ -684,7 +684,7 @@ gearDropdownBtn.ZIndex = 2
 local gearDropdownList = Instance.new("ScrollingFrame")
 gearDropdownList.Name = "GearDropdownList"
 gearDropdownList.Size = UDim2.new(1, -40, 0, 0)
-gearDropdownList.Position = UDim2.new(0, 20, 0, 118 + (#eggOptions > 0 and (#eggOptions * 38) or 0) + 54 + (#seedOptions > 0 and (#seedOptions * 38) or 0))
+gearDropdownList.Position = UDim2.new(0, 20, 0, 162 + (#seedOptions > 0 and (#seedOptions * 38) or 0))
 gearDropdownList.BackgroundColor3 = Color3.fromRGB(60, 120, 180)
 gearDropdownList.BorderSizePixel = 0
 gearDropdownList.Visible = false
@@ -696,11 +696,11 @@ gearDropdownList.ScrollBarThickness = 10
 
 local function updateGearDropdownText()
     if #selectedGears == 0 then
-        gearDropdownBtn.Text = "BUY GEARS:"
+        gearDropdownBtn.Text = "GEAR:"
     else
         local names = {}
         for _, g in ipairs(selectedGears) do table.insert(names, g) end
-        gearDropdownBtn.Text = "BUY GEARS: " .. table.concat(names, ", ")
+        gearDropdownBtn.Text = "GEAR: " .. table.concat(names, ", ")
     end
 end
 for i, gear in ipairs(gearOptions) do
@@ -944,13 +944,6 @@ local function hideUI()
 end
 local function showUI()
     sidebar.Visible = true
-    showUIButton.Visible = false
-end
-closeBtn.MouseButton1Click:Connect(hideUI)
-showUIButton.MouseButton1Click:Connect(showUI)
-minimizeBtn.MouseButton1Click:Connect(function()
-    sidebar.Visible = not sidebar.Visible
-    showUIButton.Visible = not sidebar.Visible
 end)
 UserInputService.InputBegan:Connect(function(input, processed)
     if not processed and input.KeyCode == Enum.KeyCode.RightShift then
@@ -961,3 +954,6 @@ UserInputService.InputBegan:Connect(function(input, processed)
         end
     end
 end)
+
+-- Initial tab selection
+selectTab("EVENT")
